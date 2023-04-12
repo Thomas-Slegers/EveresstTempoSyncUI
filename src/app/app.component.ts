@@ -9,6 +9,6 @@ export class AppComponent {
     title = 'everesstTempoSyncUI';
 
     constructor() {
-        this.title = 'Spring Boot - Angular Application';
+        this.title = 'EveresstTempoSyncUI';
     }
 }
