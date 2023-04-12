@@ -1,0 +1,23 @@
+<div class="card my-5">
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of errorsEntities">
+                <td>{{ user.id }}</td>
+                <td>{{ user.date }}</td>
+                <td>{{ user.employee }}</td>
+                <td>{{ user.errorCode }}</td>
+                <td>{{ user.description }}</td>
+                <td>{{ user.solution }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
