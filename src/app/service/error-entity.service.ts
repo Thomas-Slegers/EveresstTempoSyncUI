@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ErrorEntity} from "./error-entity";
+import {ErrorEntity} from "../model/error-entity";
 
 @Injectable({
   providedIn: 'root'
