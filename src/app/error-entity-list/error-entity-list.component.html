@@ -9,13 +9,13 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let user of errorsEntities">
-                <td>{{ user.id }}</td>
-                <td>{{ user.date }}</td>
-                <td>{{ user.employee }}</td>
-                <td>{{ user.errorCode }}</td>
-                <td>{{ user.description }}</td>
-                <td>{{ user.solution }}</td>
+            <tr *ngFor="let errorEntity of errorsEntities">
+                <td>{{ errorEntity.id }}</td>
+                <td>{{ errorEntity.date }}</td>
+                <td>{{ errorEntity.employee }}</td>
+                <td>{{ errorEntity.errorCode }}</td>
+                <td>{{ errorEntity.description }}</td>
+                <td>{{ errorEntity.solution }}</td>
             </tr>
             </tbody>
         </table>
