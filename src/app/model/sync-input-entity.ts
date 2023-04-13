@@ -1,5 +1,5 @@
 export class SyncInputEntity {
-    file: string
+    file: File
     operation: string
     baseUrl: string
     clientId: string

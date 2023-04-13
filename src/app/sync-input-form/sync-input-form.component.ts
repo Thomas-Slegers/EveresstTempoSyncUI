@@ -10,7 +10,7 @@ import {SyncInputEntity} from "../model/sync-input-entity";
     styleUrls: ['./sync-input-form.component.css']
 })
 export class SyncInputFormComponent implements OnInit {
-    file: string;
+    file: File;
     operation: string;
     operations = ["SyncTimeSheets", "CheckWorkOrders"]
     baseUrl: string;
