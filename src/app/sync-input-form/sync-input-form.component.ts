@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {SyncInputService} from "../service/sync-input.service";
-import {FormGroup, FormControl} from '@angular/forms';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
 
 
 @Component({
@@ -12,6 +12,7 @@ import {FormGroup, FormControl} from '@angular/forms';
 export class SyncInputFormComponent implements OnInit {
     file: string;
     operation: string;
+    operations = ["SyncTimeSheets", "CheckWorkOrders"]
     baseUrl: string;
     clientId: string;
     clientSecret: string;
@@ -19,11 +20,11 @@ export class SyncInputFormComponent implements OnInit {
 
     ngOnInit() {
         this.formdata = new FormGroup({
-            file: new FormControl('pathToFile'),
-            operation: new FormControl("operationExample"),
-            baseUrl: new FormControl("baseURLExample"),
-            clientId: new FormControl("clientIdExample"),
-            clientSecret: new FormControl("clientSecretExample")
+            file: new FormControl(null, Validators.required),
+            operation: new FormControl(null, Validators.required),
+            baseUrl: new FormControl(null, Validators.required),
+            clientId: new FormControl(null, Validators.required),
+            clientSecret: new FormControl(null, Validators.required)
         });
     }
 
