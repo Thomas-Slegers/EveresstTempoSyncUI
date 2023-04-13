@@ -6,18 +6,24 @@ import {AppComponent} from './app.component';
 import {ErrorEntityListComponent} from './error-entity-list/error-entity-list.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ErrorEntityService} from "./service/error-entity.service";
+import {SyncInputFormComponent} from './sync-input-form/sync-input-form.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {SyncInputService} from "./service/sync-input.service";
 
 @NgModule({
     declarations: [
         AppComponent,
-        ErrorEntityListComponent
+        ErrorEntityListComponent,
+        SyncInputFormComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
-    providers: [ErrorEntityService],
+    providers: [ErrorEntityService, SyncInputService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
