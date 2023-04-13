@@ -1,0 +1,52 @@
+<div class="card my-5">
+    <div class="card-body">
+        <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+            <div class="form-group">
+                <label for="file">File</label>
+                <input type="file"
+                       class="form-control"
+                       id="file"
+                       name="file"
+                       formControlName="file"
+                       placeholder="Input the csv file">
+            </div>
+            <div class="form-group">
+                <label for="operation">Operation</label>
+                <input type="text"
+                       class="form-control"
+                       id="operation"
+                       name="operation"
+                       formControlName="operation"
+                       placeholder="Enter the operation">
+            </div>
+            <div class="form-group">
+                <label for="baseUrl">Base Url</label>
+                <input type="url"
+                       class="form-control"
+                       id="baseUrl"
+                       name="baseUrl"
+                       formControlName="baseUrl"
+                       placeholder="Enter the base url">
+            </div>
+            <div class="form-group">
+                <label for="clientId">Client Id</label>
+                <input type="text"
+                       class="form-control"
+                       id="clientId"
+                       name="clientId"
+                       formControlName="clientId"
+                       placeholder="Enter the client id">
+            </div>
+            <div class="form-group">
+                <label for="file">Client Secret</label>
+                <input type="password"
+                       class="form-control"
+                       id="clientSecret"
+                       name="clientSecret"
+                       formControlName="clientSecret"
+                       placeholder="Input the client secret">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
