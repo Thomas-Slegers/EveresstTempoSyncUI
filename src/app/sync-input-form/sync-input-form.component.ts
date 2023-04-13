@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
 import {SyncInputService} from "../service/sync-input.service";
 import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {SyncInputEntity} from "../model/sync-input-entity";
 
 
 @Component({
@@ -17,6 +17,10 @@ export class SyncInputFormComponent implements OnInit {
     clientId: string;
     clientSecret: string;
     formdata;
+    syncInputEntity: SyncInputEntity;
+
+    constructor(private syncInputService: SyncInputService) {
+    }
 
     ngOnInit() {
         this.formdata = new FormGroup({
@@ -34,16 +38,7 @@ export class SyncInputFormComponent implements OnInit {
         this.baseUrl = data.baseUrl;
         this.clientId = data.clientId;
         this.clientSecret = data.clientSecret;
-    }
-
-
-    constructor(
-        private route: ActivatedRoute,
-        private router: Router,
-        private syncInputService: SyncInputService) {
-    }
-
-    onSubmit() {
-        this.syncInputService.send();
+        this.syncInputEntity = data;
+        this.syncInputService.startSync(this.syncInputEntity)
     }
 }
