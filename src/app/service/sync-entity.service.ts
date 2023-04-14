@@ -18,6 +18,6 @@ export class SyncEntityService {
     }
 
     public findBySyncTableUUID(syncTableUUID: any): Observable<SyncEntity[]> {
-        return this.http.get<SyncEntity[]>('${syncURL}/{syncTableUUID}');
+        return this.http.get<SyncEntity[]>(`${this.syncUrl}/${syncTableUUID}`);
     }
 }
