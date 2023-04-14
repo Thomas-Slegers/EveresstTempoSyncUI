@@ -3,6 +3,7 @@ import {SyncInputService} from "../service/sync-input.service";
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {SyncInputEntity} from "../model/sync-input-entity";
 
+const OPERATIONS: string[] = ["SyncTimeSheets", "CheckWorkOrders"]
 
 @Component({
     selector: 'app-sync-input-form',
@@ -10,14 +11,14 @@ import {SyncInputEntity} from "../model/sync-input-entity";
     styleUrls: ['./sync-input-form.component.css']
 })
 export class SyncInputFormComponent implements OnInit {
-    file: File;
-    operation: string;
-    operations = ["SyncTimeSheets", "CheckWorkOrders"]
-    baseUrl: string;
-    clientId: string;
-    clientSecret: string;
+    private file: File;
+    private operation: string;
+    private baseUrl: string;
+    private clientId: string;
+    private clientSecret: string;
+    private syncInputEntity: SyncInputEntity;
     formdata;
-    syncInputEntity: SyncInputEntity;
+    operations = OPERATIONS;
 
     constructor(private syncInputService: SyncInputService) {
     }
@@ -33,12 +34,14 @@ export class SyncInputFormComponent implements OnInit {
     }
 
     onClickSubmit(data) {
-        this.file = data.file;
+        this.file = data.file.data;
         this.operation = data.operation;
         this.baseUrl = data.baseUrl;
         this.clientId = data.clientId;
         this.clientSecret = data.clientSecret;
         this.syncInputEntity = data;
-        this.syncInputService.startSync(this.syncInputEntity)
+        this.syncInputService.startSync(this.syncInputEntity).subscribe({
+            error: (error) => console.log(error)
+        });
     }
 }
