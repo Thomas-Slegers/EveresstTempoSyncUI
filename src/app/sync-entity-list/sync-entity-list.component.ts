@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SyncEntity} from "../model/sync-entity";
 import {SyncEntityService} from "../service/sync-entity.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
     selector: 'app-sync-entity-list',
@@ -11,18 +12,29 @@ export class SyncEntityListComponent implements OnInit {
 
     syncEntities: SyncEntity[];
 
-    constructor(private syncEntityService: SyncEntityService) {
+    constructor(private route: ActivatedRoute, private router: Router, private syncEntityService: SyncEntityService) {
     }
 
     ngOnInit() {
-        this.syncEntityService.findAll().forEach((syncEntity) => console.log(syncEntity))
-        this.syncEntityService.findAll().subscribe({
-            next: (response) => {
-                this.syncEntities = response;
-            },
-            error: (error) => {
-                console.log(error);
-            }
-        });
+        let syncTableUUID = this.route.snapshot.paramMap.get("syncTableUUID")
+        if (syncTableUUID != null) {
+            this.syncEntityService.findBySyncTableUUID(this.route.snapshot.paramMap.get("syncTableUUID")).subscribe({
+                next: (response) => {
+                    this.syncEntities = response;
+                },
+                error: (error) => {
+                    console.log(error);
+                }
+            });
+        } else {
+            this.syncEntityService.findAll().subscribe({
+                next: (response) => {
+                    this.syncEntities = response;
+                },
+                error: (error) => {
+                    console.log(error);
+                }
+            });
+        }
     }
 }
