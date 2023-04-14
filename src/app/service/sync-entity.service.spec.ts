@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ErrorEntityService } from './error-entity.service';
+import { SyncEntityService } from './sync-entity.service';
 
-describe('ErrorEntityService', () => {
-  let service: ErrorEntityService;
+describe('SyncEntityService', () => {
+  let service: SyncEntityService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ErrorEntityService);
+    service = TestBed.inject(SyncEntityService);
   });
 
   it('should be created', () => {

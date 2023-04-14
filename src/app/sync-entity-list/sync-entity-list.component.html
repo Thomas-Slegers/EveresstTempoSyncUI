@@ -3,6 +3,7 @@
         <table class="table table-bordered table-striped">
             <thead class="thead-dark">
             <tr>
+                <th scope="col">Sync Table UUID</th>
                 <th scope="col">#</th>
                 <th scope="col">Date</th>
                 <th scope="col">Name</th>
@@ -12,13 +13,14 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let errorEntity of errorsEntities">
-                <td>{{ errorEntity.id }}</td>
-                <td>{{ errorEntity.date }}</td>
-                <td>{{ errorEntity.employee }}</td>
-                <td>{{ errorEntity.errorCode }}</td>
-                <td>{{ errorEntity.description }}</td>
-                <td>{{ errorEntity.solution }}</td>
+            <tr *ngFor="let syncEntity of syncEntities">
+                <td>{{ syncEntity.syncTableUUID }}</td>
+                <td>{{ syncEntity.id }}</td>
+                <td>{{ syncEntity.date }}</td>
+                <td>{{ syncEntity.employeeName }}</td>
+                <td>{{ syncEntity.errorCode }}</td>
+                <td>{{ syncEntity.description }}</td>
+                <td>{{ syncEntity.solution }}</td>
             </tr>
             </tbody>
         </table>

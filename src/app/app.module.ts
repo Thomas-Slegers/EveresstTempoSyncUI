@@ -3,9 +3,9 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {ErrorEntityListComponent} from './error-entity-list/error-entity-list.component';
+import {SyncEntityListComponent} from './sync-entity-list/sync-entity-list.component';
 import {HttpClientModule} from "@angular/common/http";
-import {ErrorEntityService} from "./service/error-entity.service";
+import {SyncEntityService} from "./service/sync-entity.service";
 import {SyncInputFormComponent} from './sync-input-form/sync-input-form.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SyncInputService} from "./service/sync-input.service";
@@ -13,7 +13,7 @@ import {SyncInputService} from "./service/sync-input.service";
 @NgModule({
     declarations: [
         AppComponent,
-        ErrorEntityListComponent,
+        SyncEntityListComponent,
         SyncInputFormComponent
     ],
     imports: [
@@ -23,7 +23,7 @@ import {SyncInputService} from "./service/sync-input.service";
         FormsModule,
         ReactiveFormsModule
     ],
-    providers: [ErrorEntityService, SyncInputService],
+    providers: [SyncEntityService, SyncInputService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
