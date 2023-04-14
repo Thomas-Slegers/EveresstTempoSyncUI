@@ -5,7 +5,7 @@ import {SyncInputFormComponent} from "./sync-input-form/sync-input-form.componen
 
 const routes: Routes = [
     {path: 'errors', component: ErrorEntityListComponent},
-    {path: 'sync-input', component: SyncInputFormComponent}
+    {path: 'input', component: SyncInputFormComponent}
 ];
 
 @NgModule({
