@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {ErrorEntityListComponent} from "./error-entity-list/error-entity-list.component";
+import {SyncEntityListComponent} from "./sync-entity-list/sync-entity-list.component";
 import {SyncInputFormComponent} from "./sync-input-form/sync-input-form.component";
 
 const routes: Routes = [
-    {path: 'errors', component: ErrorEntityListComponent},
+    {path: 'sync', component: SyncEntityListComponent},
     {path: 'input', component: SyncInputFormComponent}
 ];
 
