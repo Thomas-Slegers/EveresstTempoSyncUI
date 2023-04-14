@@ -15,8 +15,13 @@ export class ErrorEntityListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.errorEntityService.findAll().subscribe(data => {
-            this.errorsEntities = data;
-        })
+        this.errorEntityService.findAll().subscribe({
+            next: (response) => {
+                this.errorsEntities = response;
+            },
+            error: (error) => {
+                console.log(error);
+            }
+        });
     }
 }
