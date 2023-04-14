@@ -4,6 +4,7 @@ import {SyncEntityListComponent} from "./sync-entity-list/sync-entity-list.compo
 import {SyncInputFormComponent} from "./sync-input-form/sync-input-form.component";
 
 const routes: Routes = [
+    {path: 'sync/:syncTableUUID', component: SyncEntityListComponent},
     {path: 'sync', component: SyncEntityListComponent},
     {path: 'input', component: SyncInputFormComponent}
 ];
