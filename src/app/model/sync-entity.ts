@@ -1,14 +1,8 @@
 export class SyncEntity {
-    syncTableUUID: string;
     id: string;
-    team: string;
-    date: string;
-    camisResource: string;
+    message: string;
     employeeName: string;
-    timeCode: string;
-    workOrder: string;
+    startDate: string;
     hoursLogged: string;
-    errorCode: string;
-    description: string;
-    solution: string;
+    workOrder: string;
 }
