@@ -1,6 +1,6 @@
 <div class="card my-5">
     <div class="card-body">
-        <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+        <form [formGroup]="formData" (ngSubmit)="onClickSubmit(formData.value)">
             <div class="form-group">
                 <label for="file">File</label>
                 <input type="file"
@@ -8,10 +8,11 @@
                        id="file"
                        name="file"
                        formControlName="file"
+                       (change)="selectFile($event)"
                        placeholder="Input the csv file">
-                <div *ngIf="formdata.controls['file'].invalid && (formdata.controls['file'].touched)"
+                <div *ngIf="formData.controls['file'].invalid && (formData.controls['file'].touched)"
                      class="alert alert-danger">
-                    <div *ngIf="formdata.controls['file'].errors?.['required']">
+                    <div *ngIf="formData.controls['file'].errors?.['required']">
                         File is required.
                     </div>
                 </div>
@@ -26,9 +27,9 @@
                     <option *ngFor="let operat of operations" [ngValue]="operat">{{operat}}</option>
                 </select>
             </div>
-            <div *ngIf="formdata.controls['operation'].invalid && (formdata.controls['operation'].touched)"
+            <div *ngIf="formData.controls['operation'].invalid && (formData.controls['operation'].touched)"
                  class="alert alert-danger">
-                <div *ngIf="formdata.controls['operation'].errors?.['required']">
+                <div *ngIf="formData.controls['operation'].errors?.['required']">
                     Operation is required.
                 </div>
             </div>
@@ -41,9 +42,9 @@
                        formControlName="baseUrl"
                        placeholder="Enter the base url">
             </div>
-            <div *ngIf="formdata.controls['baseUrl'].invalid && (formdata.controls['baseUrl'].touched)"
+            <div *ngIf="formData.controls['baseUrl'].invalid && (formData.controls['baseUrl'].touched)"
                  class="alert alert-danger">
-                <div *ngIf="formdata.controls['baseUrl'].errors?.['required']">
+                <div *ngIf="formData.controls['baseUrl'].errors?.['required']">
                     Base url is required.
                 </div>
             </div>
@@ -56,9 +57,9 @@
                        formControlName="clientId"
                        placeholder="Enter the client id">
             </div>
-            <div *ngIf="formdata.controls['clientId'].invalid && (formdata.controls['clientId'].touched)"
+            <div *ngIf="formData.controls['clientId'].invalid && (formData.controls['clientId'].touched)"
                  class="alert alert-danger">
-                <div *ngIf="formdata.controls['clientId'].errors?.['required']">
+                <div *ngIf="formData.controls['clientId'].errors?.['required']">
                     Client Id is required.
                 </div>
             </div>
@@ -71,13 +72,13 @@
                        formControlName="clientSecret"
                        placeholder="Enter the client secret">
             </div>
-            <div *ngIf="formdata.controls['clientSecret'].invalid && (formdata.controls['clientSecret'].touched)"
+            <div *ngIf="formData.controls['clientSecret'].invalid && (formData.controls['clientSecret'].touched)"
                  class="alert alert-danger">
-                <div *ngIf="formdata.controls['clientSecret'].errors?.['required']">
+                <div *ngIf="formData.controls['clientSecret'].errors?.['required']">
                     Client secret is required.
                 </div>
             </div>
-            <button type="submit" [disabled]="!formdata.valid">Start Syncing</button>
+            <button type="submit" [disabled]="!formData.valid">Start Syncing</button>
         </form>
     </div>
 </div>
