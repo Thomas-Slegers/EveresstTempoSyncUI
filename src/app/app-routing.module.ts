@@ -4,9 +4,9 @@ import {SyncEntityListComponent} from "./sync-entity-list/sync-entity-list.compo
 import {SyncInputFormComponent} from "./sync-input-form/sync-input-form.component";
 
 const routes: Routes = [
-    {path: 'sync/:syncTableUUID', component: SyncEntityListComponent},
     {path: '**', redirectTo: '/'},
-    {path: 'input', component: SyncInputFormComponent}
+    {path: 'input', component: SyncInputFormComponent},
+    {path: 'sync/:syncTableUUID', component: SyncEntityListComponent}
 ];
 
 @NgModule({
