@@ -15,7 +15,6 @@ const OPERATIONS: string[] = ["SyncTimeSheets", "CheckWorkOrders"]
 })
 export class SyncInputFormComponent implements OnInit {
     private selectedFiles: FileList;
-    private syncResultUUID: string;
     private file: File;
     private operation: string;
     private baseUrl: string;
@@ -46,7 +45,7 @@ export class SyncInputFormComponent implements OnInit {
         this.assignVariables(data)
         this.syncInputService.startSync(this.syncInputEntity).subscribe({
             next: () => {},
-            complete: () => this.router.navigate(['./sync/' + this.syncResultUUID]),
+            complete: () => this.router.navigate(['./sync/' + this.syncInputEntity.syncResultUUID]),
             error: (error) => console.log(error)
         });
     }
@@ -60,7 +59,6 @@ export class SyncInputFormComponent implements OnInit {
         this.clientSecret = data.clientSecret;
         this.syncInputEntity = data;
         this.syncInputEntity.file = this.file;
-        this.syncResultUUID = uuidv4();
-        this.syncInputEntity.syncResultUUID = this.syncResultUUID;
+        this.syncInputEntity.syncResultUUID = uuidv4();
     }
 }
