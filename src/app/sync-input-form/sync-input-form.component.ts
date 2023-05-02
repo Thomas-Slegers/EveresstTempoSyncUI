@@ -45,7 +45,7 @@ export class SyncInputFormComponent implements OnInit {
     onClickSubmit(data) {
         this.assignVariables(data)
         this.syncInputService.startSync(this.syncInputEntity).subscribe({
-            next: (result) => console.log(result),
+            next: () => {},
             complete: () => this.router.navigate(['./sync/' + this.syncResultUUID]),
             error: (error) => console.log(error)
         });
