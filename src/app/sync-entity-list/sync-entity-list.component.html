@@ -1,5 +1,8 @@
 <div class="card my-5">
     <div class="card-body">
+        <div class="form-group">
+            <input type="search" class="form-control" [(ngModel)]="filter" placeholder="Zoeken">
+        </div>
         <table class="table table-bordered table-striped">
             <thead class="thead-dark">
             <tr>
@@ -13,7 +16,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let syncEntity of syncEntities">
+            <tr *ngFor="let syncEntity of syncEntities | syncEntity: filter">
                 <td>{{ syncEntity.id }}</td>
                 <td>{{ syncEntity.startDate }}</td>
                 <td>{{ syncEntity.employeeName }}</td>

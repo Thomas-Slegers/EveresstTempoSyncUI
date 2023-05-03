@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
     styleUrls: ['./sync-entity-list.component.css']
 })
 export class SyncEntityListComponent implements OnInit {
-
+    filter: string;
     syncEntities: SyncEntity[];
 
     constructor(private route: ActivatedRoute, private router: Router, private syncEntityService: SyncEntityService) {
