@@ -17,7 +17,6 @@ export class SyncInputFormComponent implements OnInit {
     private selectedFiles: FileList;
     private file: File;
     private operation: string;
-    private baseUrl: string;
     private clientId: string;
     private clientSecret: string;
     private syncInputEntity: SyncInputEntity;
@@ -31,7 +30,6 @@ export class SyncInputFormComponent implements OnInit {
         this.formData = new FormGroup({
             file: new FormControl(null, Validators.required),
             operation: new FormControl(null, Validators.required),
-            baseUrl: new FormControl(null, Validators.required),
             clientId: new FormControl(null, Validators.required),
             clientSecret: new FormControl(null, Validators.required)
         });
@@ -54,7 +52,6 @@ export class SyncInputFormComponent implements OnInit {
         // @ts-ignore
         this.file = this.selectedFiles.item(0);
         this.operation = data.operation;
-        this.baseUrl = data.baseUrl;
         this.clientId = data.clientId;
         this.clientSecret = data.clientSecret;
         this.syncInputEntity = data;

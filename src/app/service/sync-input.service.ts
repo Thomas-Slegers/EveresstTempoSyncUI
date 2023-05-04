@@ -18,7 +18,6 @@ export class SyncInputService {
         formdata.append("syncResultUUID", syncInputEntity.syncResultUUID);
         formdata.append("file", syncInputEntity.file);
         formdata.append("operation", syncInputEntity.operation);
-        formdata.append("baseUrl", syncInputEntity.baseUrl);
         formdata.append("clientId", syncInputEntity.clientId);
         formdata.append("clientSecret", syncInputEntity.clientSecret);
         const req = new HttpRequest('POST', this.syncUrl, formdata
