@@ -13,15 +13,15 @@ export class SyncEntityService {
         this.syncUrl = 'http://localhost:8080/sync';
     }
 
-    public findAll(): Observable<SyncEntity[]> {
-        return this.http.get<SyncEntity[]>(this.syncUrl);
-    }
-
     public findBySyncTableUUID(syncTableUUID: any): Observable<SyncEntity[]> {
         return this.http.get<SyncEntity[]>(`${this.syncUrl}/${syncTableUUID}`);
     }
 
     public findSlackInputBySyncTableUUID(syncTableUUID: any): Observable<any>{
         return this.http.get(`${this.syncUrl}/${syncTableUUID}/slack`);
+    }
+
+    public findWeeklyEntitiesBySyncTableUUIDAndResourceId(syncTableUUID: string, resourceId: string, date: string): Observable<any> {
+        return this.http.get(`${this.syncUrl}/${syncTableUUID}/${resourceId}/${date}/`);
     }
 }
