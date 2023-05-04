@@ -10,6 +10,7 @@ import {SyncInputFormComponent} from './sync-input-form/sync-input-form.componen
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SyncInputService} from "./service/sync-input.service";
 import {SearchFilterPipe} from "./sync-entity-list/search-filter-pipe";
+import {ClipboardModule} from "@angular/cdk/clipboard";
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import {SearchFilterPipe} from "./sync-entity-list/search-filter-pipe";
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ClipboardModule
     ],
     providers: [SyncEntityService, SyncInputService],
     bootstrap: [AppComponent]
