@@ -20,4 +20,8 @@ export class SyncEntityService {
     public findBySyncTableUUID(syncTableUUID: any): Observable<SyncEntity[]> {
         return this.http.get<SyncEntity[]>(`${this.syncUrl}/${syncTableUUID}`);
     }
+
+    public findSlackInputBySyncTableUUID(syncTableUUID: any): Observable<any>{
+        return this.http.get(`${this.syncUrl}/${syncTableUUID}/slack`);
+    }
 }
