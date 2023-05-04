@@ -1,7 +1,8 @@
+import {ActivatedRoute, Router} from "@angular/router";
 import {Component, OnInit} from '@angular/core';
+import {Clipboard} from '@angular/cdk/clipboard';
 import {SyncEntity} from "../model/sync-entity";
 import {SyncEntityService} from "../service/sync-entity.service";
-import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
     selector: 'app-sync-entity-list',
@@ -10,9 +11,10 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class SyncEntityListComponent implements OnInit {
     filter: string;
+    slackInput: string;
     syncEntities: SyncEntity[];
 
-    constructor(private route: ActivatedRoute, private router: Router, private syncEntityService: SyncEntityService) {
+    constructor(private route: ActivatedRoute, private clipboard: Clipboard, private router: Router, private syncEntityService: SyncEntityService) {
     }
 
     ngOnInit() {
@@ -20,6 +22,7 @@ export class SyncEntityListComponent implements OnInit {
         if (syncTableUUID != null) {
             this.syncEntityService.findBySyncTableUUID(this.route.snapshot.paramMap.get("syncTableUUID")).subscribe({
                 next: (response) => {
+                    console.log(response)
                     this.syncEntities = response;
                 },
                 error: (error) => {
@@ -35,6 +38,26 @@ export class SyncEntityListComponent implements OnInit {
                     console.log(error);
                 }
             });
+        }
+    }
+
+    copySlackInput() {
+        let syncTableUUID = this.route.snapshot.paramMap.get("syncTableUUID")
+        if (syncTableUUID != null) {
+            this.syncEntityService.findSlackInputBySyncTableUUID(this.route.snapshot.paramMap.get("syncTableUUID")).subscribe(response => {
+                const pending = this.clipboard.beginCopy(response.message);
+                let remainingAttempts = 3;
+                const attempt = () => {
+                    const result = pending.copy();
+                    if (!result && --remainingAttempts) {
+                        setTimeout(attempt);
+                    } else {
+                        // Remember to destroy when you're done!
+                        pending.destroy();
+                    }
+                };
+                attempt();
+            })
         }
     }
 }
