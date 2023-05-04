@@ -11,7 +11,6 @@ import {SyncEntityService} from "../service/sync-entity.service";
 })
 export class SyncEntityListComponent implements OnInit {
     filter: string;
-    slackInput: string;
     syncEntities: SyncEntity[];
 
     constructor(private route: ActivatedRoute, private clipboard: Clipboard, private router: Router, private syncEntityService: SyncEntityService) {
@@ -20,17 +19,7 @@ export class SyncEntityListComponent implements OnInit {
     ngOnInit() {
         let syncTableUUID = this.route.snapshot.paramMap.get("syncTableUUID")
         if (syncTableUUID != null) {
-            this.syncEntityService.findBySyncTableUUID(this.route.snapshot.paramMap.get("syncTableUUID")).subscribe({
-                next: (response) => {
-                    console.log(response)
-                    this.syncEntities = response;
-                },
-                error: (error) => {
-                    console.log(error);
-                }
-            });
-        } else {
-            this.syncEntityService.findAll().subscribe({
+            this.syncEntityService.findBySyncTableUUID(syncTableUUID).subscribe({
                 next: (response) => {
                     this.syncEntities = response;
                 },
