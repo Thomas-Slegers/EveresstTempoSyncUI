@@ -11,13 +11,15 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SyncInputService} from "./service/sync-input.service";
 import {SearchFilterPipe} from "./sync-entity-list/search-filter-pipe";
 import {ClipboardModule} from "@angular/cdk/clipboard";
+import { SyncWeekEntityOverviewComponent } from './sync-week-entity-overview/sync-week-entity-overview.component';
 
 @NgModule({
     declarations: [
         AppComponent,
+        SearchFilterPipe,
         SyncEntityListComponent,
         SyncInputFormComponent,
-        SearchFilterPipe
+        SyncWeekEntityOverviewComponent
     ],
     imports: [
         BrowserModule,
