@@ -1,0 +1,26 @@
+<div class="card my-5">
+    <div class="card-body">
+        <div>
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Work Order</th>
+                    <th scope="col">Hours Logged Camis</th>
+                    <th scope="col">Hours Logged Jira</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let syncWeekEntity of syncWeekEntities">
+                    <td>{{ syncWeekEntity.id }}</td>
+                    <td>{{ syncWeekEntity.date }}</td>
+                    <td>{{ syncWeekEntity.workOrder }}</td>
+                    <td>{{ syncWeekEntity.hoursLoggedCamis }}</td>
+                    <td>{{ syncWeekEntity.hoursLoggedJira }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
