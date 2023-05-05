@@ -3,13 +3,13 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {SyncEntityListComponent} from './sync-entity-list/sync-entity-list.component';
+import {SyncEntityOverviewComponent} from './sync-entity-overview/sync-entity-overview.component';
 import {HttpClientModule} from "@angular/common/http";
 import {SyncEntityService} from "./service/sync-entity.service";
 import {SyncInputFormComponent} from './sync-input-form/sync-input-form.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SyncInputService} from "./service/sync-input.service";
-import {SearchFilterPipe} from "./sync-entity-list/search-filter-pipe";
+import {SearchFilterPipe} from "./sync-entity-overview/search-filter-pipe";
 import {ClipboardModule} from "@angular/cdk/clipboard";
 import { SyncWeekOverviewComponent } from './sync-week-overview/sync-week-overview.component';
 
@@ -17,7 +17,7 @@ import { SyncWeekOverviewComponent } from './sync-week-overview/sync-week-overvi
     declarations: [
         AppComponent,
         SearchFilterPipe,
-        SyncEntityListComponent,
+        SyncEntityOverviewComponent,
         SyncInputFormComponent,
         SyncWeekOverviewComponent
     ],
