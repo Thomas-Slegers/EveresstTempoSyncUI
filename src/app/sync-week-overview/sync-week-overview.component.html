@@ -12,12 +12,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let syncWeekEntity of syncWeekEntities">
-                    <td>{{ syncWeekEntity.id }}</td>
-                    <td>{{ syncWeekEntity.date }}</td>
-                    <td>{{ syncWeekEntity.workOrder }}</td>
-                    <td>{{ syncWeekEntity.hoursLoggedCamis }}</td>
-                    <td>{{ syncWeekEntity.hoursLoggedJira }}</td>
+                <tr *ngFor="let syncDayEntity of syncDayEntities">
+                    <td>{{ syncDayEntity.id }}</td>
+                    <td>{{ syncDayEntity.date }}</td>
+                    <td>{{ syncDayEntity.workOrder }}</td>
+                    <td>{{ syncDayEntity.hoursLoggedCamis }}</td>
+                    <td>{{ syncDayEntity.hoursLoggedJira }}</td>
                 </tr>
                 </tbody>
             </table>

@@ -1,4 +1,4 @@
-export class SyncWeekEntity {
+export class SyncDayEntity {
     id: string
     date: string
     workOrder: string

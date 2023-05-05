@@ -21,7 +21,7 @@ export class SyncEntityService {
         return this.http.get(`${this.syncUrl}/${syncTableUUID}/slack`);
     }
 
-    public findWeekEntitiesBySyncTableUUIDAndResourceId(syncTableUUID: string, resourceId: string, date: string): Observable<any> {
+    public findDayEntitiesBySyncTableUUIDAndResourceId(syncTableUUID: string, resourceId: string, date: string): Observable<any> {
         return this.http.get(`${this.syncUrl}/${syncTableUUID}/${resourceId}/${date}/`);
     }
 }

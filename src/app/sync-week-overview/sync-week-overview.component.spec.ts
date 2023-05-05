@@ -1,18 +1,18 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {SyncWeekEntityOverviewComponent} from './sync-week-entity-overview.component';
+import {SyncWeekOverviewComponent} from './sync-week-overview.component';
 
 describe('SyncWeekEntityOverviewComponent', () => {
-    let component: SyncWeekEntityOverviewComponent;
-    let fixture: ComponentFixture<SyncWeekEntityOverviewComponent>;
+    let component: SyncWeekOverviewComponent;
+    let fixture: ComponentFixture<SyncWeekOverviewComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [SyncWeekEntityOverviewComponent]
+            declarations: [SyncWeekOverviewComponent]
         })
             .compileComponents();
 
-        fixture = TestBed.createComponent(SyncWeekEntityOverviewComponent);
+        fixture = TestBed.createComponent(SyncWeekOverviewComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
