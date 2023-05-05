@@ -6,10 +6,10 @@ import {SyncEntityService} from "../service/sync-entity.service";
 
 @Component({
     selector: 'app-sync-entity-list',
-    templateUrl: './sync-entity-list.component.html',
-    styleUrls: ['./sync-entity-list.component.css']
+    templateUrl: './sync-entity-overview.component.html',
+    styleUrls: ['./sync-entity-overview.component.css']
 })
-export class SyncEntityListComponent implements OnInit {
+export class SyncEntityOverviewComponent implements OnInit {
     filter: string;
     syncEntities: SyncEntity[];
 
@@ -48,5 +48,10 @@ export class SyncEntityListComponent implements OnInit {
                 attempt();
             })
         }
+    }
+
+    getOverviewWeek(syncEntity: SyncEntity){
+        let syncTableUUID = this.route.snapshot.paramMap.get("syncTableUUID")
+        this.router.navigate(['./sync/' + syncTableUUID + '/' + syncEntity.resourceId + '/' + syncEntity.startDate])
     }
 }

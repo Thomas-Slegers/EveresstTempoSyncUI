@@ -1,18 +1,18 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {SyncEntityListComponent} from './sync-entity-list.component';
+import {SyncEntityOverviewComponent} from './sync-entity-overview.component';
 
 describe('SyncEntityListComponent', () => {
-    let component: SyncEntityListComponent;
-    let fixture: ComponentFixture<SyncEntityListComponent>;
+    let component: SyncEntityOverviewComponent;
+    let fixture: ComponentFixture<SyncEntityOverviewComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [SyncEntityListComponent]
+            declarations: [SyncEntityOverviewComponent]
         })
             .compileComponents();
 
-        fixture = TestBed.createComponent(SyncEntityListComponent);
+        fixture = TestBed.createComponent(SyncEntityOverviewComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
