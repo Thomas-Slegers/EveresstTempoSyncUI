@@ -13,8 +13,8 @@
                     <th scope="col">Start Date</th>
                     <th scope="col">Resource Id</th>
                     <th scope="col">Employee Name</th>
-                    <th scope="col">Error Code</th>
-                    <th scope="col">Minimum Hours Logged</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Minimum Hours Needed Logging</th>
                     <th scope="col">Work Order</th>
                     <th scope="col">Message</th>
                     <th scope="col">More Info</th>
@@ -29,9 +29,9 @@
                     <td>{{ syncEntity.hoursLogged }}</td>
                     <td>{{ syncEntity.workOrder }}</td>
                     <td>{{ syncEntity.message }}</td>
-                    <td *ngIf="syncEntity.errorCode == '1'"></td>
-                    <td *ngIf="syncEntity.errorCode != '1'"><button (click)="getOverviewWeek(syncEntity)">Overview Week</button></td>
-
+                    <td>
+                        <button (click)="getOverviewWeek(syncEntity)">Overview Week</button>
+                    </td>
                 </tr>
                 </tbody>
             </table>
