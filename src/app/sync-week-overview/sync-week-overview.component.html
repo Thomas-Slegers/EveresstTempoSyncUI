@@ -12,13 +12,27 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let syncDayEntity of syncDayEntities">
-                    <td *ngIf="syncDayEntity.hoursLoggedJira === syncDayEntity.hoursLoggedCamis"><span class="material-icons">check</span></td>
-                    <td *ngIf="syncDayEntity.hoursLoggedJira !== syncDayEntity.hoursLoggedCamis"><span class="material-icons">clear</span></td>
-                    <td>{{ syncDayEntity.date }}</td>
-                    <td>{{ syncDayEntity.workOrder }}</td>
-                    <td>{{ syncDayEntity.hoursLoggedCamis }}</td>
-                    <td>{{ syncDayEntity.hoursLoggedJira }}</td>
+                <tr *ngFor="let syncDayEntity of syncDayEntities"
+                    [ngStyle]="getRowStyle(syncDayEntity.hoursLoggedCamis != '-1' && syncDayEntity.hoursLoggedJira !== syncDayEntity.hoursLoggedCamis)">
+                    <ng-container
+                            *ngIf="syncDayEntity.hoursLoggedCamis == '-1'; then camisNotAvailable; else camisAvailable"></ng-container>
+                    <ng-template #camisNotAvailable>
+                        <td><span class="material-icons">horizontal_rule</span></td>
+                        <td>{{ syncDayEntity.date }}</td>
+                        <td>{{ syncDayEntity.workOrder }}</td>
+                        <td>/</td>
+                        <td>{{ syncDayEntity.hoursLoggedJira }}</td>
+                    </ng-template>
+                    <ng-template #camisAvailable>
+                        <td *ngIf="syncDayEntity.hoursLoggedCamis != '-1' && syncDayEntity.hoursLoggedJira === syncDayEntity.hoursLoggedCamis ">
+                            <span class="material-icons">check</span></td>
+                        <td *ngIf="syncDayEntity.hoursLoggedCamis != '-1' && syncDayEntity.hoursLoggedJira !== syncDayEntity.hoursLoggedCamis ">
+                            <span class="material-icons">clear</span></td>
+                        <td>{{ syncDayEntity.date }}</td>
+                        <td>{{ syncDayEntity.workOrder }}</td>
+                        <td>{{ syncDayEntity.hoursLoggedCamis }}</td>
+                        <td>{{ syncDayEntity.hoursLoggedJira }}</td>
+                    </ng-template>
                 </tr>
                 </tbody>
             </table>
