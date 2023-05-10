@@ -4,7 +4,7 @@
             <table class="table table-bordered table-striped">
                 <thead class="thead-dark">
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">Correct</th>
                     <th scope="col">Date</th>
                     <th scope="col">Work Order</th>
                     <th scope="col">Hours Logged Camis</th>
@@ -13,7 +13,8 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let syncDayEntity of syncDayEntities">
-                    <td>{{ syncDayEntity.id }}</td>
+                    <td *ngIf="syncDayEntity.hoursLoggedJira === syncDayEntity.hoursLoggedCamis"><span class="material-icons">check</span></td>
+                    <td *ngIf="syncDayEntity.hoursLoggedJira !== syncDayEntity.hoursLoggedCamis"><span class="material-icons">clear</span></td>
                     <td>{{ syncDayEntity.date }}</td>
                     <td>{{ syncDayEntity.workOrder }}</td>
                     <td>{{ syncDayEntity.hoursLoggedCamis }}</td>
