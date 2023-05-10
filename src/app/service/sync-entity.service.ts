@@ -22,6 +22,6 @@ export class SyncEntityService {
     }
 
     public findDayEntitiesBySyncTableUUIDAndResourceId(syncTableUUID: string, resourceId: string, date: string): Observable<any> {
-        return this.http.get(`${this.syncUrl}/${syncTableUUID}/${resourceId}/${date}/`);
+        return this.http.get(`${this.syncUrl}/${syncTableUUID}/${resourceId}/${date}`);
     }
 }
