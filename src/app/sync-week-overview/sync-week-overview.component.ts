@@ -22,11 +22,19 @@ export class SyncWeekOverviewComponent implements OnInit {
             this.syncEntityService.findDayEntitiesBySyncTableUUIDAndResourceId(syncTableUUID, resourceId, date).subscribe({
                 next: (response) => {
                     this.syncDayEntities = response;
+                    this.syncDayEntities.sort((firstElement, secondElement) => firstElement.date.localeCompare(secondElement.date));
                 },
                 error: (error) => {
                     console.log(error);
                 }
             });
         }
+    }
+
+    getRowStyle(value) {
+        if (value == true) {
+            return {'background-color': 'red'};
+        } else
+            return {};
     }
 }
