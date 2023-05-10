@@ -10,7 +10,6 @@
             <table class="table table-bordered table-striped">
                 <thead class="thead-dark">
                 <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Start Date</th>
                     <th scope="col">Resource Id</th>
                     <th scope="col">Employee Name</th>
@@ -23,7 +22,6 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let syncEntity of syncEntities | syncEntity: filter">
-                    <td>{{ syncEntity.id }}</td>
                     <td>{{ syncEntity.startDate }}</td>
                     <td>{{ syncEntity.resourceId }}</td>
                     <td>{{ syncEntity.employeeName }}</td>
@@ -31,7 +29,9 @@
                     <td>{{ syncEntity.hoursLogged }}</td>
                     <td>{{ syncEntity.workOrder }}</td>
                     <td>{{ syncEntity.message }}</td>
-                    <td><button (click)="getOverviewWeek(syncEntity)">Overview Week</button></td>
+                    <td *ngIf="syncEntity.errorCode == '1'"></td>
+                    <td *ngIf="syncEntity.errorCode != '1'"><button (click)="getOverviewWeek(syncEntity)">Overview Week</button></td>
+
                 </tr>
                 </tbody>
             </table>
