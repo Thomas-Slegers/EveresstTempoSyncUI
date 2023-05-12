@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpEvent, HttpRequest} from "@angular/common/http";
 import {SyncInputEntity} from "../model/sync-input-entity";
 import {Observable} from "rxjs";
+import {Environment} from "../environment";
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +11,8 @@ export class SyncInputService {
     private readonly syncUrl: string;
 
     constructor(private http: HttpClient) {
-        this.syncUrl = 'http://localhost:8080/input';
+        const env = new Environment();
+        this.syncUrl = env.getInputUrl;
     }
 
     public startSync(syncInputEntity: SyncInputEntity): Observable<HttpEvent<SyncInputEntity>> {
