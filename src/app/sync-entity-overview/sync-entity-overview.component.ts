@@ -22,6 +22,7 @@ export class SyncEntityOverviewComponent implements OnInit {
             this.syncEntityService.findBySyncTableUUID(syncTableUUID).subscribe({
                 next: (response) => {
                     this.syncEntities = response;
+                    this.syncEntities.sort((firstElement, secondElement) => firstElement.employeeName.localeCompare(secondElement.employeeName) || firstElement.startDate.localeCompare(secondElement.startDate));
                 },
                 error: (error) => {
                     console.log(error);
