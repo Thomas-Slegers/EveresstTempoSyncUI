@@ -4,5 +4,5 @@ export class SyncDayEntity {
     date: string
     workOrder: string
     hoursLoggedCamis: string
-    hoursLoggedJira: string
+    hoursLoggedTempo: string
 }

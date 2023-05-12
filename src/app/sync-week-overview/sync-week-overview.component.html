@@ -8,30 +8,31 @@
                     <th scope="col">Date</th>
                     <th scope="col">Work Order</th>
                     <th scope="col">Hours Logged Camis</th>
-                    <th scope="col">Hours Logged Jira</th>
+                    <th scope="col">Hours Logged Tempo</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let syncDayEntity of syncDayEntities"
-                    [ngStyle]="getRowStyle(syncDayEntity.hoursLoggedCamis != '-1' && syncDayEntity.hoursLoggedJira !== syncDayEntity.hoursLoggedCamis)">
+                    [ngStyle]="getRowStyle(syncDayEntity.hoursLoggedCamis != '-1' && syncDayEntity.hoursLoggedTempo !== syncDayEntity.hoursLoggedCamis)">
                     <ng-container
-                            *ngIf="syncDayEntity.hoursLoggedCamis == '-1'; then camisNotAvailable; else camisAvailable"></ng-container>
+                            *ngIf="syncDayEntity.hoursLoggedCamis == '-1'; then camisNotAvailable; else camisAvailable">
+                    </ng-container>
                     <ng-template #camisNotAvailable>
                         <td><span class="material-icons">horizontal_rule</span></td>
                         <td>{{ syncDayEntity.date }}</td>
                         <td>{{ syncDayEntity.workOrder }}</td>
                         <td>/</td>
-                        <td>{{ syncDayEntity.hoursLoggedJira }}</td>
+                        <td>{{ syncDayEntity.hoursLoggedTempo }}</td>
                     </ng-template>
                     <ng-template #camisAvailable>
-                        <td *ngIf="syncDayEntity.hoursLoggedCamis != '-1' && syncDayEntity.hoursLoggedJira === syncDayEntity.hoursLoggedCamis ">
+                        <td *ngIf="syncDayEntity.hoursLoggedCamis != '-1' && syncDayEntity.hoursLoggedTempo === syncDayEntity.hoursLoggedCamis ">
                             <span class="material-icons">check</span></td>
-                        <td *ngIf="syncDayEntity.hoursLoggedCamis != '-1' && syncDayEntity.hoursLoggedJira !== syncDayEntity.hoursLoggedCamis ">
+                        <td *ngIf="syncDayEntity.hoursLoggedCamis != '-1' && syncDayEntity.hoursLoggedTempo !== syncDayEntity.hoursLoggedCamis ">
                             <span class="material-icons">clear</span></td>
                         <td>{{ syncDayEntity.date }}</td>
                         <td>{{ syncDayEntity.workOrder }}</td>
                         <td>{{ syncDayEntity.hoursLoggedCamis }}</td>
-                        <td>{{ syncDayEntity.hoursLoggedJira }}</td>
+                        <td>{{ syncDayEntity.hoursLoggedTempo }}</td>
                     </ng-template>
                 </tr>
                 </tbody>
