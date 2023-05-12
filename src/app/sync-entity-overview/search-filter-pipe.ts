@@ -14,18 +14,11 @@ export class SearchFilterPipe implements PipeTransform {
 
         // @ts-ignore
         return values.filter((value: SyncEntity) => {
-            const idFound =
-                value.id.toString().toLowerCase().indexOf(filter.toLowerCase()) !== -1;
-            const messageFound =
-                value.message.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
             const employeeNameFound =
                 value.employeeName.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
-            const errorCodeFound =
-                value.errorCode.toString().toLowerCase().indexOf(filter.toLowerCase()) !== -1;
-            const hoursLoggedFound =
-                value.hoursLogged.toString().toLowerCase().indexOf(filter.toLowerCase()) !== -1;
-            if ( idFound || messageFound || employeeNameFound || errorCodeFound || hoursLoggedFound) {
-                console.log(value)
+            const startDateFound =
+                value.startDate.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
+            if ( employeeNameFound || startDateFound) {
                 return value;
             }
         });
