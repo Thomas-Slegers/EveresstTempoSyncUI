@@ -5,9 +5,6 @@ import {SyncInputEntity} from "../model/sync-input-entity";
 import {v4 as uuidv4} from 'uuid';
 import {Router} from "@angular/router";
 
-
-const OPERATIONS: string[] = ["SyncTimeSheets", "CheckWorkOrders"]
-
 @Component({
     selector: 'app-sync-input-form',
     templateUrl: './sync-input-form.component.html',
@@ -16,12 +13,10 @@ const OPERATIONS: string[] = ["SyncTimeSheets", "CheckWorkOrders"]
 export class SyncInputFormComponent implements OnInit {
     private selectedFiles: FileList;
     private file: File;
-    private operation: string;
     private clientId: string;
     private clientSecret: string;
     private syncInputEntity: SyncInputEntity;
     formData;
-    operations = OPERATIONS;
 
     constructor(private syncInputService: SyncInputService, private router: Router) {
     }
@@ -29,7 +24,6 @@ export class SyncInputFormComponent implements OnInit {
     ngOnInit() {
         this.formData = new FormGroup({
             file: new FormControl(null, Validators.required),
-            operation: new FormControl(null, Validators.required),
             clientId: new FormControl(null, Validators.required),
             clientSecret: new FormControl(null, Validators.required)
         });
@@ -51,7 +45,6 @@ export class SyncInputFormComponent implements OnInit {
     assignVariables(data) {
         // @ts-ignore
         this.file = this.selectedFiles.item(0);
-        this.operation = data.operation;
         this.clientId = data.clientId;
         this.clientSecret = data.clientSecret;
         this.syncInputEntity = data;
