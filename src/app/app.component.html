@@ -11,6 +11,10 @@
                 <a class="nav-link" [routerLink]="['input']" routerLinkActive="active">Input <span
                         class="sr-only"></span></a>
             </li>
+            <li *ngIf="getUrl().includes('/sync/')">
+                <a class="nav-link" [routerLink]="getUrl()" routerLinkActive="active">Sync<span
+                        class="sr-only"></span></a>
+            </li>
         </ul>
     </div>
 </nav>

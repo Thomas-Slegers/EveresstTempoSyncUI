@@ -13,4 +13,8 @@ export class AppComponent {
         this.title = 'EveresstTempoSyncUI';
         this.isCollapsed = true
     }
+
+    getUrl(){
+        return location.pathname;
+    }
 }
