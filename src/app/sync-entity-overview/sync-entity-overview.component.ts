@@ -6,8 +6,7 @@ import {SyncEntityService} from "../service/sync-entity.service";
 
 @Component({
     selector: 'app-sync-entity-list',
-    templateUrl: './sync-entity-overview.component.html',
-    styleUrls: ['./sync-entity-overview.component.css']
+    templateUrl: './sync-entity-overview.component.html'
 })
 export class SyncEntityOverviewComponent implements OnInit {
     filter: string;
@@ -32,7 +31,6 @@ export class SyncEntityOverviewComponent implements OnInit {
     }
 
     copySlackInput() {
-        console.log(this.syncEntities)
         let syncTableUUID = this.route.snapshot.paramMap.get("syncTableUUID")
         if (syncTableUUID != null) {
             this.syncEntityService.findSlackInputBySyncTableUUID(this.route.snapshot.paramMap.get("syncTableUUID")).subscribe(response => {

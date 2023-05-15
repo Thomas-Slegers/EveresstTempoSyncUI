@@ -7,8 +7,7 @@ import {SyncInputService} from "../service/sync-input.service";
 
 @Component({
     selector: 'app-sync-input-form',
-    templateUrl: './sync-input-form.component.html',
-    styleUrls: ['./sync-input-form.component.css']
+    templateUrl: './sync-input-form.component.html'
 })
 export class SyncInputFormComponent implements OnInit {
     private selectedFiles: FileList;
