@@ -6,9 +6,11 @@ import {Component} from '@angular/core';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    title = 'EveresstTempoSyncUI';
+    title = 'everesstTempoSyncUI';
+    isCollapsed:boolean;
 
     constructor() {
         this.title = 'EveresstTempoSyncUI';
+        this.isCollapsed = true
     }
 }
