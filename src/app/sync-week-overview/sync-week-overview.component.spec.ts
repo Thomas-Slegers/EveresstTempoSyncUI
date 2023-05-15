@@ -1,5 +1,6 @@
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-
+import {RouterTestingModule} from "@angular/router/testing";
 import {SyncWeekOverviewComponent} from './sync-week-overview.component';
 
 describe('SyncWeekEntityOverviewComponent', () => {
@@ -8,6 +9,7 @@ describe('SyncWeekEntityOverviewComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
+            imports: [RouterTestingModule, HttpClientTestingModule],
             declarations: [SyncWeekOverviewComponent]
         })
             .compileComponents();

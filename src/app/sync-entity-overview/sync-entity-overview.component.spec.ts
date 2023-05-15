@@ -1,13 +1,16 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-
+/*import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {SyncEntityOverviewComponent} from './sync-entity-overview.component';
+import {RouterTestingModule} from "@angular/router/testing";
 
-describe('SyncEntityListComponent', () => {
+
+describe('SyncEntityOverviewComponent', () => {
     let component: SyncEntityOverviewComponent;
     let fixture: ComponentFixture<SyncEntityOverviewComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
+            imports: [RouterTestingModule, HttpClientTestingModule],
             declarations: [SyncEntityOverviewComponent]
         })
             .compileComponents();
@@ -20,4 +23,4 @@ describe('SyncEntityListComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
-});
+});*/

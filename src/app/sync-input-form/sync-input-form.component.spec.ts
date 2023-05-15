@@ -1,5 +1,7 @@
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {RouterTestingModule} from "@angular/router/testing";
 import {SyncInputFormComponent} from './sync-input-form.component';
 
 describe('SyncInputFormComponent', () => {
@@ -8,6 +10,7 @@ describe('SyncInputFormComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
+            imports: [RouterTestingModule, HttpClientTestingModule, ReactiveFormsModule, FormsModule],
             declarations: [SyncInputFormComponent]
         })
             .compileComponents();

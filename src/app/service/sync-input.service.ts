@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
 import {HttpClient, HttpEvent, HttpRequest} from "@angular/common/http";
-import {SyncInputEntity} from "../model/sync-input-entity";
+import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {Environment} from "../environment";
+import {SyncInputEntity} from "../model/sync-input-entity";
 
 @Injectable({
     providedIn: 'root'

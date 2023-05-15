@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {SyncInputService} from "../service/sync-input.service";
 import {FormGroup, FormControl, Validators} from '@angular/forms';
-import {SyncInputEntity} from "../model/sync-input-entity";
-import {v4 as uuidv4} from 'uuid';
 import {Router} from "@angular/router";
+import {v4 as uuidv4} from 'uuid';
+import {SyncInputEntity} from "../model/sync-input-entity";
+import {SyncInputService} from "../service/sync-input.service";
 
 @Component({
     selector: 'app-sync-input-form',

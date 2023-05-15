@@ -5,6 +5,7 @@ import {ClipboardModule} from "@angular/cdk/clipboard";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {NgModule} from '@angular/core';
+import {RouterTestingModule} from "@angular/router/testing";
 import {SyncEntityService} from "./service/sync-entity.service";
 import {SearchFilterPipe} from "./sync-entity-overview/search-filter-pipe";
 import {SyncEntityOverviewComponent} from './sync-entity-overview/sync-entity-overview.component';
@@ -21,12 +22,13 @@ import {SyncWeekOverviewComponent} from './sync-week-overview/sync-week-overview
         SyncWeekOverviewComponent
     ],
     imports: [
-        BrowserModule,
         AppRoutingModule,
-        HttpClientModule,
+        BrowserModule,
+        ClipboardModule,
         FormsModule,
+        HttpClientModule,
         ReactiveFormsModule,
-        ClipboardModule
+        RouterTestingModule
     ],
     providers: [SyncEntityService, SyncInputService],
     bootstrap: [AppComponent]

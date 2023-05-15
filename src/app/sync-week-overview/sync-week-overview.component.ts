@@ -1,7 +1,7 @@
-import {ActivatedRoute, Router} from "@angular/router";
 import {Component, OnInit} from '@angular/core';
-import {SyncEntityService} from "../service/sync-entity.service";
+import {ActivatedRoute, Router} from "@angular/router";
 import {SyncDayEntity} from "../model/sync-day-entity";
+import {SyncEntityService} from "../service/sync-entity.service";
 
 @Component({
     selector: 'app-sync-day-entity.ts-overview',
