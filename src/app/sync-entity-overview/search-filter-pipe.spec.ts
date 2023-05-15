@@ -27,7 +27,7 @@ describe('SearchFilterPipe', () => {
             }]
     })
 
-    it('should return SyncEntities filtered on the searchTerm date "2023-05-01"', () => {
+    it('should return a list of one SyncEntity filtered on the searchTerm date "2023-05-01"', () => {
         const result = searchFilterPipe.transform(syncEntities, "2023-05-01");
         const syncEntitiesEnd = [{
             employeeName: "Bryon, Ward",
