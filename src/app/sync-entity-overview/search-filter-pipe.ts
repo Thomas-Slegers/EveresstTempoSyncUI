@@ -1,7 +1,8 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import { SyncEntity } from '../model/sync-entity';
+import {Pipe, PipeTransform} from '@angular/core';
+import {SyncEntity} from '../model/sync-entity';
 
-@Pipe({ name: 'syncEntity' })
+@Pipe({name: 'syncEntity'})
+
 export class SearchFilterPipe implements PipeTransform {
     transform(values: SyncEntity[], filter: string): SyncEntity[] {
         if (!filter || filter.length === 0) {
@@ -18,7 +19,7 @@ export class SearchFilterPipe implements PipeTransform {
                 value.employeeName.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
             const startDateFound =
                 value.startDate.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
-            if ( employeeNameFound || startDateFound) {
+            if (employeeNameFound || startDateFound) {
                 return value;
             }
         });

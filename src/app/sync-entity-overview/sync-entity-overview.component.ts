@@ -1,6 +1,6 @@
-import {ActivatedRoute, Router} from "@angular/router";
-import {Component, OnInit} from '@angular/core';
 import {Clipboard} from '@angular/cdk/clipboard';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
 import {SyncEntity} from "../model/sync-entity";
 import {SyncEntityService} from "../service/sync-entity.service";
 
@@ -32,6 +32,7 @@ export class SyncEntityOverviewComponent implements OnInit {
     }
 
     copySlackInput() {
+        console.log(this.syncEntities)
         let syncTableUUID = this.route.snapshot.paramMap.get("syncTableUUID")
         if (syncTableUUID != null) {
             this.syncEntityService.findSlackInputBySyncTableUUID(this.route.snapshot.paramMap.get("syncTableUUID")).subscribe(response => {
@@ -51,7 +52,7 @@ export class SyncEntityOverviewComponent implements OnInit {
         }
     }
 
-    getOverviewWeek(syncEntity: SyncEntity){
+    getOverviewWeek(syncEntity: SyncEntity) {
         let syncTableUUID = this.route.snapshot.paramMap.get("syncTableUUID")
         this.router.navigate(['./sync/' + syncTableUUID + '/' + syncEntity.resourceId + '/' + syncEntity.startDate])
     }
