@@ -7,8 +7,8 @@
             <button (click)="copySlackInput()">Slack Input</button>
         </div>
         <div class="table-responsive">
-            <table class="table custom-table">
-                <thead class="custom-thead">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
                 <tr>
                     <th scope="col">Start Date</th>
                     <th scope="col">Employee Name</th>
@@ -20,7 +20,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let syncEntity of syncEntities | syncEntity: filter" class="custom-row">
+                <tr *ngFor="let syncEntity of syncEntities | syncEntity: filter">
                     <td>{{ syncEntity.startDate }}</td>
                     <td>{{ syncEntity.employeeName }}</td>
                     <td>{{ syncEntity.errorCode }}</td>
