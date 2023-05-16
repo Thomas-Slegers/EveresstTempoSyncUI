@@ -4,17 +4,16 @@
             <input type="search" class="form-control" [(ngModel)]="filter" placeholder="Search">
         </div>
         <div class="options">
-            <button id="slackInput" (click)="copySlackInput()">Slack Input</button>
+            <button class="btn btn-outline-secondary" id="slackInput" (click)="copySlackInput()">Slack Input</button>
             <div class="form-check">
                 <input
-                        mdbCheckbox
                         class="form-check-input"
                         type="checkbox"
-                        id="flexCheckDefault"
                         checked="true"
+                        id="syncVisibilityCheck"
                         (change)="changeSyncVisibility($event)"
                 />
-                <label class="form-check-label" for="flexCheckDefault">
+                <label class="form-check-label" for="syncVisibilityCheck">
                     No sync needed visible
                 </label>
             </div>
@@ -42,7 +41,7 @@
                     <td>{{ syncEntity.workOrder }}</td>
                     <td>{{ syncEntity.message }}</td>
                     <td>
-                        <button (click)="getOverviewWeek(syncEntity)">Overview Week</button>
+                        <button class="btn btn-secondary" (click)="getOverviewWeek(syncEntity)">Overview Week</button>
                     </td>
                 </tr>
                 </tbody>
