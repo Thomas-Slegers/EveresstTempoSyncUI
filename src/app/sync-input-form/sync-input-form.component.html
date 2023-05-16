@@ -2,18 +2,34 @@
     <div class="card-body">
         <form [formGroup]="formData" (ngSubmit)="onClickSubmit(formData.value)">
             <div class="form-group">
-                <label for="file">File</label>
+                <label for="syncfile">Sync File</label>
                 <input type="file"
                        class="form-control"
-                       id="file"
-                       name="file"
-                       formControlName="file"
-                       (change)="selectFile($event)"
-                       placeholder="Input the csv file">
-                <div *ngIf="formData.controls['file'].invalid && (formData.controls['file'].touched)"
+                       id="syncFile"
+                       name="syncFile"
+                       formControlName="syncFile"
+                       (change)="selectSyncFile($event)"
+                       placeholder="Input the sync hours csv file">
+                <div *ngIf="formData.controls['syncFile'].invalid && (formData.controls['syncFile'].touched)"
                      class="alert alert-danger">
-                    <div *ngIf="formData.controls['file'].errors?.['required']">
-                        File is required.
+                    <div *ngIf="formData.controls['syncFile'].errors?.['required']">
+                        Sync file is required.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="slackEmployeesFile">Slack Employees File</label>
+                <input type="file"
+                       class="form-control"
+                       id="slackEmployeesFile"
+                       name="slackEmployeesFile"
+                       formControlName="slackEmployeesFile"
+                       (change)="selectSlackEmployeesFile($event)"
+                       placeholder="Input the slack names csv file">
+                <div *ngIf="formData.controls['slackEmployeesFile'].invalid && (formData.controls['slackEmployeesFile'].touched)"
+                     class="alert alert-danger">
+                    <div *ngIf="formData.controls['slackEmployeesFile'].errors?.['required']">
+                        Slack employees file is required.
                     </div>
                 </div>
             </div>

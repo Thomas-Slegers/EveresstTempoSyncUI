@@ -10,8 +10,10 @@ import {SyncInputService} from "../service/sync-input.service";
     templateUrl: './sync-input-form.component.html'
 })
 export class SyncInputFormComponent implements OnInit {
-    private selectedFiles: FileList;
-    private file: File;
+    private selectedSyncFiles: FileList;
+    private selectedSlackEmployeesFiles: FileList;
+    private syncFile: File;
+    private slackEmployeesFile: File
     private clientId: string;
     private clientSecret: string;
     private syncInputEntity: SyncInputEntity;
@@ -22,14 +24,18 @@ export class SyncInputFormComponent implements OnInit {
 
     ngOnInit() {
         this.formData = new FormGroup({
-            file: new FormControl(null, Validators.required),
+            syncFile: new FormControl(null, Validators.required),
+            slackEmployeesFile: new FormControl(null, Validators.required),
             clientId: new FormControl(null, Validators.required),
             clientSecret: new FormControl(null, Validators.required)
         });
     }
 
-    selectFile(event) {
-        this.selectedFiles = event.target.files;
+    selectSyncFile(event) {
+        this.selectedSyncFiles = event.target.files;
+    }
+    selectSlackEmployeesFile(event) {
+        this.selectedSlackEmployeesFiles = event.target.files;
     }
 
     onClickSubmit(data) {
@@ -43,11 +49,14 @@ export class SyncInputFormComponent implements OnInit {
 
     assignVariables(data) {
         // @ts-ignore
-        this.file = this.selectedFiles.item(0);
+        this.syncFile = this.selectedSyncFiles.item(0);
+        // @ts-ignore
+        this.slackEmployeesFile = this.selectedSlackEmployeesFiles.item(0);
         this.clientId = data.clientId;
         this.clientSecret = data.clientSecret;
         this.syncInputEntity = data;
-        this.syncInputEntity.file = this.file;
+        this.syncInputEntity.syncFile = this.syncFile;
+        this.syncInputEntity.slackEmployeesFile = this.slackEmployeesFile;
         this.syncInputEntity.syncResultUUID = uuidv4();
     }
 }

@@ -1,6 +1,7 @@
 export class SyncInputEntity {
     syncResultUUID: string
-    file: File
+    syncFile: File
+    slackEmployeesFile: File
     clientId: string
     clientSecret: string
 }
