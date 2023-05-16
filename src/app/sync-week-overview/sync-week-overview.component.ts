@@ -37,4 +37,8 @@ export class SyncWeekOverviewComponent implements OnInit {
         } else
             return {};
     }
+
+    getUrl(){
+        return location.pathname;
+    }
 }
