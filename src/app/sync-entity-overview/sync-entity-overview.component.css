@@ -1,0 +1,8 @@
+.options {
+    display: flex;
+    padding: 10px 0;
+}
+
+#slackInput{
+    margin-right: 20px;
+}
