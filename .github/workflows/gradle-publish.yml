@@ -37,7 +37,7 @@ jobs:
 
       # https://github.com/marketplace/actions/upload-github-release-assets
       - name: Upload the artifacts
-        uses: nebula-actions/upload-assets
+        uses: nebula-actions/upload-assets@v1
         with:
           asset-path: dist.zip
           tag: ${{ github.ref }}
