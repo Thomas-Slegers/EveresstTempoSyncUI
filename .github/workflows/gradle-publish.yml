@@ -36,17 +36,11 @@ jobs:
         run: ls -l
 
       # https://github.com/marketplace/actions/upload-asset
-      - name: Upload the artifacts
-        uses: PeerXu/upload-asset@v1
+      - name: Upload assets to a Release
+        uses: AButler/upload-release-assets@v2.0.2
         with:
-          file: dist.zip
-          os: linux
-          arch: amd64
-          with_tag: true
-          with_sha1: true
-          suffix: .zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          files: dist.zip
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
 
       #- name: Deploy
