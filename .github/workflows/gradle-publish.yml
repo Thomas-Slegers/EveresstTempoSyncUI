@@ -36,9 +36,10 @@ jobs:
 
       # https://github.com/marketplace/actions/upload-asset
       - name: Upload assets to a Release
-        uses: AButler/upload-release-assets@v2.0.2
+        uses: Shopify/upload-to-release@v1.0.1
         with:
-          files: dist.zip
+          name: dist
+          path: dist.zip
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
 
