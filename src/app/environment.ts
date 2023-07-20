@@ -4,8 +4,8 @@ export class Environment {
     private _syncUrl: string
     constructor (){
         if (this.mode === "dev"){
-            this._inputUrl = 'http://localhost:8080/input';
-            this._syncUrl = 'http://localhost:8080/sync';
+            this._inputUrl = 'http://localhost:5000/input';
+            this._syncUrl = 'http://localhost:5000/sync';
         } else{
             this._inputUrl = 'Nog te bepalen';
             this._syncUrl = 'Nog te bepalen';

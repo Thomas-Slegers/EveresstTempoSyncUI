@@ -1,6 +1,13 @@
 # EveresstTempoSyncUI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5
+
+In the root EveresstTempoSyncUi folder, run:  
+    
+    npm install -g @angular/cli@15.2.5
+    npm update
+    npm install
+    
 
 ## Development server
 
@@ -25,3 +32,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Install Node on Windows
+
+On Node's download page there is  a .zip archive download which contains both the nodejs executable and npm.
+Unpacking that to a suitable path and adding this path to your PATH environment variable (step 2.) will give you both node and npm.
+Add <NODE_PATH> to your PATH environment variable (set PATH=<NODE_PATH>;%PATH% in the Command Line)
+set PATH="C:\portapps\node-v18.17.0-win-x64";%PATH%
+
