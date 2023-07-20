@@ -29,8 +29,11 @@ jobs:
       - name: Zip the built artifacts
         run: zip -r -q dist.zip dist
 
-      - name: Echo the size
-        run: zip -r -q dist.zip dist
+      - name: Pwd
+        run: pwd
+
+      - name: Ls
+        run: ls -l
 
       # https://github.com/actions/upload-artifact
       - name: Upload the artifacts
