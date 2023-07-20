@@ -29,11 +29,12 @@ jobs:
       - name: Zip the built artifacts
         run: zip -r -q dist.zip dist
 
+      # https://github.com/actions/upload-artifact
       - name: Upload the artifacts
-          uses: actions/upload-artifact@v3
-          with:
-            name: dist
-            path: dist.zip
+        uses: actions/upload-artifact@v3
+         with:
+          name: dist
+          path: dist.zip
 
 
 
