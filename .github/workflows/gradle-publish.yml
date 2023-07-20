@@ -32,9 +32,9 @@ jobs:
       # https://github.com/actions/upload-artifact
       - name: Upload the artifacts
         uses: actions/upload-artifact@v3
-         with:
-         name: dist
-         path: dist.zip
+          with:
+            name: dist
+            path: dist.zip
 
 
 
