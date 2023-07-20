@@ -35,13 +35,12 @@ jobs:
       - name: Ls
         run: ls -l
 
-      # https://github.com/actions/upload-artifact
+      # https://github.com/marketplace/actions/upload-github-release-assets
       - name: Upload the artifacts
-        uses: actions/upload-artifact@v3
+        uses: nebula-actions/upload-assets
         with:
-          name: dist
-          path: dist.zip
-          if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
+          asset-path: dist.zip
+          tag: ${{ github.ref }}
 
 
       #- name: Deploy
