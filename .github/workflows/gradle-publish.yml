@@ -29,6 +29,14 @@ jobs:
       - name: Zip the built artifacts
         run: zip -r -q dist.zip dist
 
+      - name: Upload the artifacts
+          uses: actions/upload-artifact@v3
+          with:
+            name: dist
+            path: dist.zip
+
+
+
       #- name: Deploy
         #  if: success()
         #uses: peaceiris/actions-gh-pages@v3
