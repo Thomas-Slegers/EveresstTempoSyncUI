@@ -23,13 +23,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-
-
-      #- name: Run tests
-      #  run: npm run test:headless
+      - name: Running unit tests
+        run: ng test
 
       - name: Build
         run: ng build
+
+      - name: Zip the built artifacts
+        run: zip -r -q dist.zip dist
 
       #- name: Deploy
         #  if: success()
