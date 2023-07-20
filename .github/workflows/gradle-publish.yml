@@ -31,11 +31,11 @@ jobs:
 
       # https://github.com/actions/upload-artifact
       - name: Upload the artifacts
-        uses: actions/upload-artifact@v3
-          with:
-            name: dist
-            path: dist.zip
-
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist.zip
+          if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
 
 
       #- name: Deploy
