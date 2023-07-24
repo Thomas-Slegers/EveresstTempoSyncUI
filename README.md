@@ -39,4 +39,3 @@ On Node's download page there is  a .zip archive download which contains both th
 Unpacking that to a suitable path and adding this path to your PATH environment variable (step 2.) will give you both node and npm.
 Add <NODE_PATH> to your PATH environment variable (set PATH=<NODE_PATH>;%PATH% in the Command Line)
 set PATH="C:\portapps\node-v18.17.0-win-x64";%PATH%
-

@@ -1,0 +1,50 @@
+name: Publish and Deploy EveresstTempoSyncUI
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli@15.2.5
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: ng build
+
+      - name: Zip the built artifacts
+        run: zip -r -q dist.zip dist
+
+#      - name: Pwd
+#        run: pwd
+
+#      - name: Ls
+#        run: ls -l
+
+      #https://github.com/a-sync/s3-uploader
+      - name: Upload folder to bucket
+        uses: a-sync/s3-uploader@2.0.1
+        #Add a folder to a bucket, excluding .log files
+        with:
+          args: --recursive --exclude "*.log"
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'eu-central-1'
+          S3_BUCKET: 'everesst-tempo-camis-sync-ui'
+          #This is probably the encryption key
+          S3_KEY: s3://everesst-tempo-camis-sync-ui/
+          FILE: dist
