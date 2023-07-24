@@ -5,7 +5,7 @@
 Log in to the AWS Management Console.
 Navigate to the S3 service.
 Click on "Create bucket."
-Choose a unique name for your bucket (e.g., "my-static-website").
+Choose a unique name for your bucket (e.g., "everesst-tempo-camis-sync-ui").
 Select the region for your bucket.
 Click "Create."
 Enable Static Website Hosting:
@@ -80,11 +80,15 @@ Access Users or Roles:
 In the IAM dashboard, click on "Users" in the left-hand navigation pane to manage IAM users or click on "Roles" to manage IAM roles. If you don't have any existing IAM user or role with appropriate S3 permissions, you will need to create one.
 Create a New IAM User (if required):
 
-To create a new IAM user, click on the "Add user" button.
-Provide a user name and select "Programmatic access" as the access type.
-Follow the prompts to set permissions. You can attach an existing policy that provides the necessary S3 permissions or create a custom policy.
+To create a new IAM user, click on the "Add user" button. `Github-Action`
 Complete the user creation process.
-Retrieve the Access Keys:
+
+## Setup group permissions
+Add to a group `DevOps` and add the above user.
+Add the Permission to this group : 
+
+
+## Retrieve the Access Keys:
 
 After creating the IAM user or identifying an existing user or role with the required S3 permissions, select the user or role from the list.
 Go to the "Security credentials" tab for IAM users or "Permissions" tab for IAM roles.
@@ -95,10 +99,19 @@ To generate new access keys, click on the "Create access key" button.
 A new Access Key ID and Secret Access Key will be displayed. Make sure to save the Secret Access Key securely as it will not be shown again.
 With the Access Key ID and Secret Access Key, you can now use AWS SDKs, AWS CLI, or other third-party tools to upload contents to your S3 bucket programmatically. Be cautious with the Secret Access Key, as it provides access to your AWS resources, and you should avoid sharing it publicly or checking it into version control systems.
 
-# Add the user credentials to your Github
+## Add the user credentials to your Github Repository
 
-    Create a User `Github-Action`
-    add to a group `DevOps`
-    Give the group Permission `AmazonS3FullAccess`
-    Create new Security credentials Access Keys
-    Add these security credentials to Github
+under EveresstTempoSyncUI/settings/secrets/actions
+
+Add the following secrets and their values :
+
+    AWS_ACCESS_KEY_ID
+    AWS_REGION
+    AWS_S3_BUCKET
+    AWS_SECRET_ACCESS_KEY
+
+
+## Run the Github Action 
+by taking a release and check the url
+
+    http://AWS_S3_BUCKET.s3-website.AWS_REGION.amazonaws.com
