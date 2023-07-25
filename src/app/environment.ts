@@ -1,14 +1,15 @@
 export class Environment {
-    private mode: string  = "dev"
+//     private _mode: string  = "dev"
+    private _mode: string  = "prod"
     private _inputUrl: string
     private _syncUrl: string
     constructor (){
-        if (this.mode === "dev"){
+        if (this._mode === "dev"){
             this._inputUrl = 'http://localhost:5000/input';
             this._syncUrl = 'http://localhost:5000/sync';
         } else{
-            this._inputUrl = 'Nog te bepalen';
-            this._syncUrl = 'Nog te bepalen';
+            this._inputUrl = 'http://tempocamissync-env.eba-jxuqphcp.eu-central-1.elasticbeanstalk.com/input';
+            this._syncUrl = 'http://tempocamissync-env.eba-jxuqphcp.eu-central-1.elasticbeanstalk.com/sync';
         }
     }
 

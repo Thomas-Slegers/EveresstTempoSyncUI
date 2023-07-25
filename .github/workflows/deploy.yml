@@ -28,12 +28,6 @@ jobs:
       - name: Zip the built artifacts
         run: zip -r -q dist.zip dist
 
-#      - name: Pwd
-#        run: pwd
-
-#      - name: Ls
-#        run: ls -l
-
       #https://github.com/a-sync/s3-uploader
       - name: Upload folder to bucket
         uses: a-sync/s3-uploader@2.0.1
