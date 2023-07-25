@@ -1,4 +1,4 @@
-# Hosting on S3
+# Hosting on AWS S3
 
 ## Create an S3 Bucket:
 
@@ -24,22 +24,37 @@ Click on "Bucket Policy."
 You need to add a policy that allows public read access to the objects in the bucket. Below is a sample bucket policy for public read access:
 json
 Copy code
-{
-"Version": "2012-10-17",
-"Statement": [
-{
-"Effect": "Allow",
-"Principal": "*",
-"Action": "s3:GetObject",
-"Resource": "arn:aws:s3:::your-bucket-name/*"
-}
-]
-}
+
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::your-bucket-name/*"
+            }
+        ]
+    }
+
 Replace "your-bucket-name" with the name of your S3 bucket. This policy grants read permission to all users.
 
 Click "Save changes."
 Upload Your Website Files:
 
+
+### Disable Block Public Access:
+Go to the S3 bucket properties page.
+Click on the "Permissions" tab.
+Under the "Block public access" section, click on the "Edit" button.
+Make sure all the checkboxes for blocking public access are unchecked.
+There are four checkboxes: "Block all public access," "Block public access to buckets and objects granted through new access control lists (ACLs)," "Block public access to buckets and objects granted through any access control lists (ACLs)," and "Block public access to buckets and objects granted through new public bucket or access point policies."
+Uncheck all these checkboxes to disable block public access.
+Click "Save changes."
+By disabling "Block public access," you allow your S3 bucket to be publicly accessible, provided you have also set appropriate permissions for the bucket and its objects, as mentioned in the previous steps. Remember that with public access, anyone with the URL can access the objects in your bucket, so it's essential to be cautious about what data you make publicly available.
+
+
+### Test it
 In the S3 bucket page, click on the "Upload" button.
 Add your website files (e.g., HTML, CSS, JavaScript, images) to the bucket.
 Ensure that the "Manage public permissions" option is checked while uploading the files to make them publicly accessible.
@@ -55,16 +70,6 @@ Set Up a Custom Domain (Optional):
 
 If you want to use a custom domain for your static website, you can do this using Amazon Route 53 or any other domain registrar service. Follow the respective service's documentation to configure the DNS settings to point to your S3 bucket's website endpoint.
 That's it! Your Amazon S3 bucket is now configured to host a static website, and it should be accessible to the public via the S3 bucket's endpoint or your custom domain, if you set one up.
-
-Disable Block Public Access:
-Go to the S3 bucket properties page.
-Click on the "Permissions" tab.
-Under the "Block public access" section, click on the "Edit" button.
-Make sure all the checkboxes for blocking public access are unchecked.
-There are four checkboxes: "Block all public access," "Block public access to buckets and objects granted through new access control lists (ACLs)," "Block public access to buckets and objects granted through any access control lists (ACLs)," and "Block public access to buckets and objects granted through new public bucket or access point policies."
-Uncheck all these checkboxes to disable block public access.
-Click "Save changes."
-By disabling "Block public access," you allow your S3 bucket to be publicly accessible, provided you have also set appropriate permissions for the bucket and its objects, as mentioned in the previous steps. Remember that with public access, anyone with the URL can access the objects in your bucket, so it's essential to be cautious about what data you make publicly available.
 
 ## Setup user credentials
 To upload contents to an Amazon S3 bucket outside of the AWS website, you need to use AWS access keys associated with an IAM (Identity and Access Management) user or role that has the necessary permissions to perform S3 operations. These access keys consist of an Access Key ID and a Secret Access Key. Here's how you can find or generate the access keys:
@@ -86,7 +91,6 @@ Complete the user creation process.
 ## Setup group permissions
 Add to a group `DevOps` and add the above user.
 Add the Permission to this group : 
-
 
 ## Retrieve the Access Keys:
 
