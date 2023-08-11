@@ -8,7 +8,7 @@ const routes: Routes = [
     {path: 'input', component: SyncInputFormComponent},
     {path: 'sync/:syncTableUUID', component: SyncEntityOverviewComponent},
     {path: 'sync/:syncTableUUID/:resourceId/:date', component: SyncWeekOverviewComponent},
-    {path: '**', redirectTo: '/'}
+    {path: '**', redirectTo: '/input'}
 ];
 
 @NgModule({
