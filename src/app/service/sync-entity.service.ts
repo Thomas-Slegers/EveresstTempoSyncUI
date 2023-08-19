@@ -23,7 +23,11 @@ export class SyncEntityService {
         return this.http.get(`${this.syncUrl}/${syncTableUUID}/slack`);
     }
 
-    public findDayEntitiesBySyncTableUUIDAndResourceId(syncTableUUID: string, resourceId: string, date: string): Observable<any> {
-        return this.http.get(`${this.syncUrl}/${syncTableUUID}/${resourceId}/${date}`);
+    public findDayEntitiesBySyncTableUUIDAndResourceId(syncTableUUID: string, resourceId: string, date?: string | null): Observable<any> {
+        if(typeof date !== 'undefined' && date != null){
+            return this.http.get(`${this.syncUrl}/${syncTableUUID}/${resourceId}/${date}`);
+        }else{
+            return this.http.get(`${this.syncUrl}/${syncTableUUID}/${resourceId}`);
+        }
     }
 }

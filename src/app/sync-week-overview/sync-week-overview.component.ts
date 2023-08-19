@@ -18,7 +18,7 @@ export class SyncWeekOverviewComponent implements OnInit {
         let syncTableUUID = this.route.snapshot.paramMap.get("syncTableUUID")
         let resourceId = this.route.snapshot.paramMap.get("resourceId")
         let date = this.route.snapshot.paramMap.get("date")
-        if (syncTableUUID != null && resourceId != null && date != null) {
+        if (syncTableUUID != null && resourceId != null) {
             this.syncEntityService.findDayEntitiesBySyncTableUUIDAndResourceId(syncTableUUID, resourceId, date).subscribe({
                 next: (response) => {
                     this.syncDayEntities = response;
