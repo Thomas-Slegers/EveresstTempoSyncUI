@@ -1,7 +1,7 @@
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
-import {SyncEntity} from "../model/sync-entity";
+import {SyncResultEntry} from "../model/sync-result-entry";
 import {Environment} from "../environment";
 
 @Injectable({
@@ -15,8 +15,8 @@ export class SyncEntityService {
         this.syncUrl = env.getSyncUrl;
     }
 
-    public findBySyncTableUUID(syncTableUUID: any): Observable<SyncEntity[]> {
-        return this.http.get<SyncEntity[]>(`${this.syncUrl}/${syncTableUUID}`);
+    public findBySyncTableUUID(syncTableUUID: any): Observable<SyncResultEntry[]> {
+        return this.http.get<SyncResultEntry[]>(`${this.syncUrl}/${syncTableUUID}`);
     }
 
     public findSlackInputBySyncTableUUID(syncTableUUID: any): Observable<any>{

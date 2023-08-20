@@ -33,15 +33,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let syncEntity of filteredEntities | syncEntity: filter">
-                    <td>{{ syncEntity.startDate }}</td>
-                    <td>{{ syncEntity.employeeName }}</td>
-                    <td>{{ syncEntity.errorCode }}</td>
-                    <td>{{ syncEntity.hoursLogged }}</td>
-                    <td>{{ syncEntity.workOrder }}</td>
-                    <td>{{ syncEntity.message }}</td>
+                <tr *ngFor="let syncResultEntry of filteredEntities | syncResultEntry: filter">
+                    <td>{{ syncResultEntry.syncDate }}</td>
+                    <td>{{ syncResultEntry.employeeName }}</td>
+                    <td>{{ syncResultEntry.syncResult }}</td>
+                    <td>{{ syncResultEntry.inputHours }}</td>
+                    <td>{{ syncResultEntry.workOrder.value }}</td>
+                    <td>{{ syncResultEntry.message }}</td>
                     <td>
-                        <button class="btn btn-secondary" (click)="getOverviewWeek(syncEntity)">Overview Week</button>
+                        <button class="btn btn-secondary" (click)="getOverviewWeek(syncResultEntry)">Overview Week</button>
                     </td>
                 </tr>
                 </tbody>

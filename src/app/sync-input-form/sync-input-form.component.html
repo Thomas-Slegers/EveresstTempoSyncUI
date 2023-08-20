@@ -64,7 +64,7 @@
                 </div>
             </div>
             <button type="submit" [disabled]="!formData.valid || syncingStarted">Start Syncing</button>
-            <div *ngIf="syncingStarted">Uploading, SyncUUID : {{syncResultUUID}} </div>
+            <div *ngIf="syncingStarted">Uploading, SyncUUID : {{syncUUID}} </div>
             <div *ngIf="syncingStarted">You'll be redirected to the Sync Result page after upload of the input </div>
         </form>
     </div>

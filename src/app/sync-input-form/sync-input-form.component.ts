@@ -18,7 +18,7 @@ export class SyncInputFormComponent implements OnInit {
     private clientSecret: string;
     private syncInputEntity: SyncInputEntity;
     syncingStarted : boolean;
-    syncResultUUID : string;
+    syncUUID : string;
     formData;
 
     constructor(private syncInputService: SyncInputService, private router: Router) {
@@ -45,10 +45,10 @@ export class SyncInputFormComponent implements OnInit {
     onClickSubmit(data) {
         this.syncingStarted = true;
         this.assignVariables(data)
-        this.syncResultUUID = this.syncInputEntity.syncResultUUID;
+        this.syncUUID = this.syncInputEntity.syncUUID;
         this.syncInputService.startSync(this.syncInputEntity).subscribe({
             next: () => {},
-            complete: () => this.router.navigate(['./sync/' + this.syncInputEntity.syncResultUUID]),
+            complete: () => this.router.navigate(['./sync/' + this.syncInputEntity.syncUUID]),
             error: (error) => console.log(error)
         });
     }
@@ -63,6 +63,6 @@ export class SyncInputFormComponent implements OnInit {
         this.syncInputEntity = data;
         this.syncInputEntity.syncFile = this.syncFile;
         this.syncInputEntity.slackEmployeesFile = this.slackEmployeesFile;
-        this.syncInputEntity.syncResultUUID = uuidv4();
+        this.syncInputEntity.syncUUID = uuidv4();
     }
 }

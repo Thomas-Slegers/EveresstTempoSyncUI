@@ -1,7 +1,7 @@
 import {Clipboard} from '@angular/cdk/clipboard';
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {SyncEntity} from "../model/sync-entity";
+import {SyncResultEntry} from "../model/sync-result-entry";
 import {SyncEntityService} from "../service/sync-entity.service";
 
 @Component({
@@ -11,8 +11,8 @@ import {SyncEntityService} from "../service/sync-entity.service";
 })
 export class SyncEntityOverviewComponent implements OnInit {
     filter: string;
-    syncEntities: SyncEntity[];
-    filteredEntities: SyncEntity[]
+    syncEntities: SyncResultEntry[];
+    filteredEntities: SyncResultEntry[]
     syncVisibility = true
 
     constructor(private route: ActivatedRoute, private clipboard: Clipboard, private router: Router, private syncEntityService: SyncEntityService) {
@@ -53,9 +53,9 @@ export class SyncEntityOverviewComponent implements OnInit {
         }
     }
 
-    getOverviewWeek(syncEntity: SyncEntity) {
+    getOverviewWeek(syncResultEntry: SyncResultEntry) {
         let syncTableUUID = this.route.snapshot.paramMap.get("syncTableUUID")
-        this.router.navigate(['./sync/' + syncTableUUID + '/' + syncEntity.resourceId + '/' + syncEntity.startDate])
+        this.router.navigate(['./sync/' + syncTableUUID + '/' + syncResultEntry.resourceId + '/' + syncResultEntry.startOfWeek])
     }
 
     changeSyncVisibility(event) {
@@ -69,6 +69,6 @@ export class SyncEntityOverviewComponent implements OnInit {
         } else {
             this.filteredEntities = this.syncEntities;
         }
-        this.filteredEntities.sort((firstElement, secondElement) => firstElement.employeeName.localeCompare(secondElement.employeeName) || firstElement.startDate.localeCompare(secondElement.startDate));
+        this.filteredEntities.sort((firstElement, secondElement) => firstElement.employeeName.localeCompare(secondElement.employeeName) || firstElement.syncDate.localeCompare(secondElement.syncDate));
     }
 }

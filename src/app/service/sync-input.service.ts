@@ -17,7 +17,7 @@ export class SyncInputService {
 
     public startSync(syncInputEntity: SyncInputEntity): Observable<HttpEvent<SyncInputEntity>> {
         const formdata: FormData = new FormData();
-        formdata.append("syncResultUUID", syncInputEntity.syncResultUUID);
+        formdata.append("syncUUID", syncInputEntity.syncUUID);
         formdata.append("syncFile", syncInputEntity.syncFile);
         formdata.append("slackEmployeesFile", syncInputEntity.slackEmployeesFile)
         formdata.append("clientId", syncInputEntity.clientId);
