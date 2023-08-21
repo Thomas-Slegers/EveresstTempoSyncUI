@@ -1,20 +1,20 @@
 <div class="card my-5">
     <div class="card-body">
         <div class="form-group">
-            <input type="search" class="form-control" [(ngModel)]="filter" placeholder="Search">
+            <input type="search" class="form-control" [(ngModel)]="filter" placeholder="Search for date or employee name">
         </div>
         <div class="options">
-            <button class="btn btn-outline-secondary" id="slackInput" (click)="copySlackInput()">Slack Input</button>
+            <!--<button class="btn btn-outline-secondary" id="slackInput" (click)="copySlackInput()">Slack Input</button>-->
             <div class="form-check">
                 <input
                         class="form-check-input"
                         type="checkbox"
                         checked="true"
-                        id="syncVisibilityCheck"
-                        (change)="changeSyncVisibility($event)"
+                        id="onlyShowErrorsCheck"
+                        (change)="onlyShowErrorsChange($event)"
                 />
-                <label class="form-check-label" for="syncVisibilityCheck">
-                    No sync needed visible
+                <label class="form-check-label" for="onlyShowErrorsCheck">
+                    Only Show Errors
                 </label>
             </div>
         </div>
@@ -23,12 +23,12 @@
             <table class="table table-bordered table-striped">
                 <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Start Date</th>
-                    <th scope="col">Employee Name</th>
-                    <th scope="col">Code</th>
-                    <th scope="col">Minimum Hours Logging Needed</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Employee</th>
+                    <th scope="col">Sync Result</th>
+                    <th scope="col">Hours Tempo</th>
+                    <th scope="col">Hours Camis</th>
                     <th scope="col">Work Order</th>
-                    <th scope="col">Message</th>
                     <th scope="col">More Info</th>
                 </tr>
                 </thead>
@@ -36,12 +36,15 @@
                 <tr *ngFor="let syncResultEntry of filteredEntities | syncResultEntry: filter">
                     <td>{{ syncResultEntry.syncDate }}</td>
                     <td>{{ syncResultEntry.employeeName }}</td>
-                    <td>{{ syncResultEntry.syncResult }}</td>
-                    <td>{{ syncResultEntry.inputHours }}</td>
-                    <td>{{ syncResultEntry.workOrder.value }}</td>
-                    <td>{{ syncResultEntry.message }}</td>
                     <td>
-                        <button class="btn btn-secondary" (click)="getOverviewWeek(syncResultEntry)">Overview Week</button>
+                        {{ syncResultEntry.syncResult }}
+                        <span class="info-icon" title="{{ syncResultEntry.message }}">ℹ️</span>
+                    </td>
+                    <td>{{ syncResultEntry.inputHours === -1 ? '' : syncResultEntry.inputHours}}</td>
+                    <td>{{ syncResultEntry.camisHours === -1 ? '' : syncResultEntry.camisHours}}</td>
+                    <td>{{ syncResultEntry.workOrder.value }}</td>
+                    <td>
+                        <button class="btn btn-secondary" (click)="showOverviewWeek(syncResultEntry)">Overview Week</button>
                     </td>
                 </tr>
                 </tbody>

@@ -15,19 +15,19 @@ export class SyncEntityService {
         this.syncUrl = env.getSyncUrl;
     }
 
-    public findBySyncTableUUID(syncTableUUID: any): Observable<SyncResultEntry[]> {
-        return this.http.get<SyncResultEntry[]>(`${this.syncUrl}/${syncTableUUID}`);
+    public findBySyncUUID(syncUUID: any): Observable<SyncResultEntry[]> {
+        return this.http.get<SyncResultEntry[]>(`${this.syncUrl}/${syncUUID}`);
     }
 
-    public findSlackInputBySyncTableUUID(syncTableUUID: any): Observable<any>{
-        return this.http.get(`${this.syncUrl}/${syncTableUUID}/slack`);
+    public findSlackInputBySyncUUID(syncUUID: any): Observable<any>{
+        return this.http.get(`${this.syncUrl}/${syncUUID}/slack`);
     }
 
-    public findDayEntitiesBySyncTableUUIDAndResourceId(syncTableUUID: string, resourceId: string, date?: string | null): Observable<any> {
+    public findDayEntitiesBySyncUUIDAndResourceId(syncUUID: string, resourceId: string, date?: string | null): Observable<any> {
         if(typeof date !== 'undefined' && date != null){
-            return this.http.get(`${this.syncUrl}/${syncTableUUID}/${resourceId}/${date}`);
+            return this.http.get(`${this.syncUrl}/${syncUUID}/${resourceId}/${date}`);
         }else{
-            return this.http.get(`${this.syncUrl}/${syncTableUUID}/${resourceId}`);
+            return this.http.get(`${this.syncUrl}/${syncUUID}/${resourceId}`);
         }
     }
 }

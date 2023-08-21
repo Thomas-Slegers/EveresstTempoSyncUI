@@ -13,18 +13,18 @@ export class SyncEntityOverviewComponent implements OnInit {
     filter: string;
     syncEntities: SyncResultEntry[];
     filteredEntities: SyncResultEntry[]
-    syncVisibility = true
+    onlyShowErrors = true
 
     constructor(private route: ActivatedRoute, private clipboard: Clipboard, private router: Router, private syncEntityService: SyncEntityService) {
     }
 
     ngOnInit() {
-        let syncTableUUID = this.route.snapshot.paramMap.get("syncTableUUID")
-        if (syncTableUUID != null) {
-            this.syncEntityService.findBySyncTableUUID(syncTableUUID).subscribe({
+        let syncUUID = this.route.snapshot.paramMap.get("syncUUID")
+        if (syncUUID != null) {
+            this.syncEntityService.findBySyncUUID(syncUUID).subscribe({
                 next: (response) => {
                     this.syncEntities = response;
-                    this.filterVisibilitySyncEntitiesAndSort()
+                    this.filterOnlyShowErrors()
                 },
                 error: (error) => {
                     console.log(error);
@@ -34,9 +34,9 @@ export class SyncEntityOverviewComponent implements OnInit {
     }
 
     copySlackInput() {
-        let syncTableUUID = this.route.snapshot.paramMap.get("syncTableUUID")
-        if (syncTableUUID != null) {
-            this.syncEntityService.findSlackInputBySyncTableUUID(this.route.snapshot.paramMap.get("syncTableUUID")).subscribe(response => {
+        let syncUUID = this.route.snapshot.paramMap.get("syncUUID")
+        if (syncUUID != null) {
+            this.syncEntityService.findSlackInputBySyncUUID(this.route.snapshot.paramMap.get("syncUUID")).subscribe(response => {
                 const pending = this.clipboard.beginCopy(response.message);
                 let remainingAttempts = 3;
                 const attempt = () => {
@@ -53,19 +53,19 @@ export class SyncEntityOverviewComponent implements OnInit {
         }
     }
 
-    getOverviewWeek(syncResultEntry: SyncResultEntry) {
-        let syncTableUUID = this.route.snapshot.paramMap.get("syncTableUUID")
-        this.router.navigate(['./sync/' + syncTableUUID + '/' + syncResultEntry.resourceId + '/' + syncResultEntry.startOfWeek])
+    showOverviewWeek(syncResultEntry: SyncResultEntry) {
+        let syncUUID = this.route.snapshot.paramMap.get("syncUUID")
+        this.router.navigate(['./sync/' + syncUUID + '/' + syncResultEntry.resourceId.value + '/' + syncResultEntry.startOfWeek])
     }
 
-    changeSyncVisibility(event) {
-        this.syncVisibility = event.target.checked;
-        this.filterVisibilitySyncEntitiesAndSort();
+    onlyShowErrorsChange(event) {
+        this.onlyShowErrors = event.target.checked;
+        this.filterOnlyShowErrors();
     }
 
-    filterVisibilitySyncEntitiesAndSort() {
-        if (!this.syncVisibility) {
-            this.filteredEntities = this.syncEntities.filter(syncEntity => !syncEntity.message.toLowerCase().includes("no sync action needed for"))
+    filterOnlyShowErrors() {
+        if (this.onlyShowErrors) {
+            this.filteredEntities = this.syncEntities.filter(syncEntity => syncEntity.syncResult.toLowerCase().includes("error"))
         } else {
             this.filteredEntities = this.syncEntities;
         }

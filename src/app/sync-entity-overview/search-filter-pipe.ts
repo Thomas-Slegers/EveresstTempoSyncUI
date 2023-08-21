@@ -17,9 +17,9 @@ export class SearchFilterPipe implements PipeTransform {
         return values.filter((value: SyncResultEntry) => {
             const employeeNameFound =
                 value.employeeName.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
-            const startDateFound =
-                value.startOfWeek.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
-            if (employeeNameFound || startDateFound) {
+            const syncDateFound =
+                value.syncDate.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
+            if (employeeNameFound || syncDateFound) {
                 return value;
             }
         });

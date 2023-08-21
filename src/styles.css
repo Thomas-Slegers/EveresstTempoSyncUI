@@ -87,3 +87,8 @@
     }
 }
 
+
+.info-icon {
+    cursor: pointer;
+    padding-left: 5px; /* Add some space between the number and the icon */
+}

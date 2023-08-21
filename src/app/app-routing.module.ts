@@ -6,9 +6,9 @@ import {SyncWeekOverviewComponent} from "./sync-week-overview/sync-week-overview
 
 const routes: Routes = [
     {path: 'input', component: SyncInputFormComponent},
-    {path: 'sync/:syncTableUUID', component: SyncEntityOverviewComponent},
-    {path: 'sync/:syncTableUUID/:resourceId/:date', component: SyncWeekOverviewComponent},
-    {path: 'sync/:syncTableUUID/:resourceId', component: SyncWeekOverviewComponent},
+    {path: 'sync/:syncUUID', component: SyncEntityOverviewComponent},
+    {path: 'sync/:syncUUID/:resourceId/:date', component: SyncWeekOverviewComponent},
+    {path: 'sync/:syncUUID/:resourceId', component: SyncWeekOverviewComponent},
     {path: '**', redirectTo: '/input'}
 ];
 
