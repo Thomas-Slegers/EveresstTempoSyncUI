@@ -6,9 +6,9 @@
                 <tr>
                     <th scope="col">Correct</th>
                     <th scope="col">Date</th>
-                    <th scope="col">Work Order</th>
-                    <th scope="col">Hours Logged Camis</th>
                     <th scope="col">Hours Logged Tempo</th>
+                    <th scope="col">Hours Logged Camis</th>
+                    <th scope="col">Work Order</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -18,27 +18,26 @@
                             *ngIf="syncResultEntry.camisHours == -1; then camisNotAvailable; else camisAvailable">
                     </ng-container>
                     <ng-template #camisNotAvailable>
-                        <td><span class="material-icons">horizontal_rule</span></td>
+                        <td><span class="material-icons" title="Nothing to sync, Tempo & Camis are equal">balance</span></td>
                         <td>{{ syncResultEntry.syncDate }}</td>
+                        <td></td>
+                        <td></td>
                         <td>{{ syncResultEntry.workOrder.value }}</td>
-                        <td>/</td>
-                        <td>{{ syncResultEntry.inputHours }}</td>
-                        <td>{{ syncResultEntry.camisHours }}</td>
                     </ng-template>
                     <ng-template #camisAvailable>
                         <td *ngIf="syncResultEntry.camisHours != -1 && syncResultEntry.inputHours === syncResultEntry.camisHours ">
-                            <span class="material-icons">check</span></td>
+                            <span class="material-icons" title="Synced correctly">check</span></td>
                         <td *ngIf="syncResultEntry.camisHours != -1 && syncResultEntry.inputHours !== syncResultEntry.camisHours ">
-                            <span class="material-icons">clear</span></td>
+                            <span class="material-icons" title="Unable to sync correctly, fix manually">clear</span></td>
                         <td>{{ syncResultEntry.syncDate }}</td>
-                        <td>{{ syncResultEntry.workOrder.value }}</td>
                         <td>{{ syncResultEntry.inputHours }}</td>
                         <td>{{ syncResultEntry.camisHours }}</td>
+                        <td>{{ syncResultEntry.workOrder.value }}</td>
                     </ng-template>
                 </tr>
                 </tbody>
             </table>
-            <button class="btn btn-secondary" [routerLink]="getUrl().substring(0, getUrl().indexOf('/',6))"><i class="bi bi-arrow-right"></i>Back</button>
+            <button class="btn btn-secondary" [routerLink]="getUrl().substring(0, getUrl().lastIndexOf('/'))"><i class="bi bi-arrow-right"></i>Sync Overview</button>
         </div>
     </div>
 </div>

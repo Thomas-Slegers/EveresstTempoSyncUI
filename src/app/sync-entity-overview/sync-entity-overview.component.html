@@ -4,7 +4,7 @@
             <input type="search" class="form-control" [(ngModel)]="filter" placeholder="Search for date or employee name">
         </div>
         <div class="options">
-            <!--<button class="btn btn-outline-secondary" id="slackInput" (click)="copySlackInput()">Slack Input</button>-->
+            <button class="btn btn-outline-secondary" id="slackInput" (click)="copySlackInput()">Slack Input</button>
             <div class="form-check">
                 <input
                         class="form-check-input"
@@ -44,7 +44,7 @@
                     <td>{{ syncResultEntry.camisHours === -1 ? '' : syncResultEntry.camisHours}}</td>
                     <td>{{ syncResultEntry.workOrder.value }}</td>
                     <td>
-                        <button class="btn btn-secondary" (click)="showOverviewWeek(syncResultEntry)">Overview Week</button>
+                        <button class="btn btn-secondary" (click)="showOverviewWeek(syncResultEntry)">Week Detail</button>
                     </td>
                 </tr>
                 </tbody>
