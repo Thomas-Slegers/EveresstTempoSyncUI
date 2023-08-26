@@ -1,6 +1,6 @@
 export class Environment {
-     private _mode: string  = "dev"
-//    private _mode: string  = "prod"
+//     private _mode: string  = "dev"
+    private _mode: string  = "prod"
     private _inputUrl: string
     private _syncUrl: string
     constructor (){
