@@ -119,3 +119,38 @@ Add the following secrets and their values :
 by taking a release and check the url
 
     http://AWS_S3_BUCKET.s3-website.AWS_REGION.amazonaws.com
+
+### Setup Cloudfront
+Open the CloudFront console at https://console.aws.amazon.com/cloudfront/.
+Create a New Distribution:
+
+Click on "Create Distribution."
+In the "Origin Domain Name" field, you'll see a list of your S3 buckets. Choose the S3 bucket that contains your website content.
+Use website endpoint
+
+Under the "Web" section, click "Get Started."
+Select the S3 Bucket:
+
+
+Configure Distribution Settings:
+
+Origin Settings:
+
+Origin ID will be auto-filled based on your S3 bucket selection.
+If you want CloudFront to restrict access to the S3 bucket (so that users can only access the content via CloudFront, not directly via the S3 URL), consider configuring "Restrict Bucket Access" to "Yes". You can then follow the steps to create an origin access identity and update bucket permissions.
+
+Accept other options as before.
+
+Under Error pages
+If you use url rewrite and not hash strategy (your paths look like http://yourwebsite/login and not http://yourwebsite/#/login create a custom error response for your CloudFront distribution with the following:
+HTTP Error Code: 404
+Error Caching Minimum TTL (seconds): 0
+Customize Error Response: Yes
+Response Page Path: /index.html
+HTTP Response Code: 200
+
+Once the distribution status is "Deployed", you can access your website using the CloudFront distribution URL (it will look something like dxxxxxxxxxxxxx.cloudfront.net). 
+If you've set up a custom domain and DNS, you can access it using your domain name.
+
+Optional - Update S3 Bucket Policy:
+If you decided to restrict direct access to your S3 bucket and allow only CloudFront to fetch the contents, ensure you've updated the S3 bucket policy to allow the CloudFront Origin Access Identity permissions to get objects from your bucket.
