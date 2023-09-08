@@ -89,8 +89,13 @@ To create a new IAM user, click on the "Add user" button. `Github-Action`
 Complete the user creation process.
 
 ## Setup group permissions
-Add to a group `DevOps` and add the above user.
+Add to a group `DevOps` and add the above user `Github-Action`
+
 Add the Permission to this group : 
+AmazonS3FullAccess
+AdministratorAccess-AWSElasticBeanstalk
+CloudFrontFullAccess
+
 
 ## Retrieve the Access Keys:
 
@@ -113,6 +118,8 @@ Add the following secrets and their values :
     AWS_REGION
     AWS_S3_BUCKET
     AWS_SECRET_ACCESS_KEY
+    AWS_SECRET_ACCESS_KEY
+    CLOUDFRONT_DISTRIBUTION_ID (see below)
 
 
 ## Run the Github Action 
@@ -155,36 +162,5 @@ If you've set up a custom domain and DNS, you can access it using your domain na
 Optional - Update S3 Bucket Policy:
 If you decided to restrict direct access to your S3 bucket and allow only CloudFront to fetch the contents, ensure you've updated the S3 bucket policy to allow the CloudFront Origin Access Identity permissions to get objects from your bucket.
 
-### Republishing Cloudfront (to replace this by automated github script)
-If you made changes, you might want to ensure that the updated content is served through CloudFront promptly. To do this, you will generally need to create an invalidation to remove the old content from CloudFront's cache.
-
-
-Log in to AWS Management Console:
-
-Navigate to the AWS Management Console and log in to your AWS account.
-Open CloudFront:
-
-From the services list, select "CloudFront."
-Locate Your Distribution:
-
-Find and select the CloudFront distribution that is associated with your S3 bucket.
-Create Invalidation:
-
-In the distribution details page, go to the "Invalidations" tab.
-Click "Create Invalidation."
-Specify Files to Invalidate:
-
-In the "Create Invalidation" dialog, specify the files you want to invalidate.
-To invalidate individual files, specify their paths, such as /images/example.jpg.
-To invalidate all files, use the wildcard character *. For example, to invalidate all files in your distribution, specify /*.
-Create the Invalidation:
-
-Click "Invalidate" to create the invalidation.
-CloudFront removes all the specified files from its cache, and the next time a user requests those files, CloudFront will fetch the updated version from the origin (S3 bucket in your case).
-Monitor the Invalidation:
-
-After creating the invalidation, monitor its progress in the CloudFront console. Once the invalidation status changes to "Completed," the invalidation is finished, and CloudFront will now serve the new content from the S3 bucket.
-Testing:
-
-To confirm the changes, you can access your content through the CloudFront distribution URL and check that the updated content from the S3 bucket is being served correctly.
-
+### Republishing to Cloudfront (= Invalidation) after a deploy to S3
+part of Github Action
