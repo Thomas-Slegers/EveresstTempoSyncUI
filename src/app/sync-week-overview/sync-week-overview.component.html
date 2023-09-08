@@ -6,6 +6,7 @@
                 <tr>
                     <th scope="col">Correct</th>
                     <th scope="col">Date</th>
+                    <th scope="col">Employee</th>
                     <th scope="col">Hours Logged Tempo</th>
                     <th scope="col">Hours Logged Camis</th>
                     <th scope="col">Work Order</th>
@@ -20,6 +21,7 @@
                     <ng-template #camisNotAvailable>
                         <td><span class="material-icons" title="Nothing to sync, Tempo & Camis are equal">balance</span></td>
                         <td>{{ syncResultEntry.syncDate }}</td>
+                        <td>{{ syncResultEntry.employeeName }}</td>
                         <td></td>
                         <td></td>
                         <td>{{ syncResultEntry.workOrder.value }}</td>
@@ -30,6 +32,7 @@
                         <td *ngIf="syncResultEntry.camisHours != -1 && syncResultEntry.inputHours !== syncResultEntry.camisHours ">
                             <span class="material-icons" title="Unable to sync correctly, fix manually">clear</span></td>
                         <td>{{ syncResultEntry.syncDate }}</td>
+                        <td>{{ syncResultEntry.employeeName }}</td>
                         <td>{{ syncResultEntry.inputHours }}</td>
                         <td>{{ syncResultEntry.camisHours }}</td>
                         <td>{{ syncResultEntry.workOrder.value }}</td>
