@@ -14,15 +14,15 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let syncResultEntry of syncResultEntries"
-                    [ngStyle]="getRowStyle(syncResultEntry.camisHours != -1 && syncResultEntry.inputHours !== syncResultEntry.camisHours)">
+                    [ngStyle]="getRowStyle(syncResultEntry)">
                     <ng-container
                             *ngIf="syncResultEntry.camisHours == -1; then camisNotAvailable; else camisAvailable">
                     </ng-container>
                     <ng-template #camisNotAvailable>
-                        <td><span class="material-icons" title="Nothing to sync, Tempo & Camis are equal">balance</span></td>
+                        <td><span class="material-icons" title="Insufficient (<8) hours booked in Tempo">clear</span></td>
                         <td>{{ syncResultEntry.syncDate }}</td>
                         <td>{{ syncResultEntry.employeeName }}</td>
-                        <td></td>
+                        <td>{{ syncResultEntry.inputHours }}</td>
                         <td></td>
                         <td>{{ syncResultEntry.workOrder.value }}</td>
                     </ng-template>
