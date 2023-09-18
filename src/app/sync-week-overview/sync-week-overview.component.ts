@@ -10,6 +10,8 @@ import {SyncEntityService} from "../service/sync-entity.service";
 })
 export class SyncWeekOverviewComponent implements OnInit {
     syncResultEntries: SyncResultEntry[];
+     @ViewChild('camisNotAvailable', { static: true }) camisNotAvailableTemplate: TemplateRef<any>;
+     @ViewChild('camisAvailable', { static: true }) camisAvailableTemplate: TemplateRef<any>;
 
     constructor(private route: ActivatedRoute, private router: Router, private syncEntityService: SyncEntityService) {
     }
@@ -31,11 +33,18 @@ export class SyncWeekOverviewComponent implements OnInit {
         }
     }
 
-    getRowStyle(syncResultEntry) {
-        if (syncResultEntry.camisHours != -1 || syncResultEntry.inputHours !== syncResultEntry.camisHours) {
+    getRowStyle(syncResultEntry : SyncResultEntry) {
+        if (syncResultEntry.camisHours != -1){
             return {'background-color': 'red'};
-        } else
+        } else if (syncResultEntry.inputHours - syncResultEntry.camisHours !== 0){
+            return {'background-color': 'red'};
+        } else{
             return {};
+        }
+    }
+
+    getTemplate(syncResultEntry: SyncResultEntry): TemplateRef<any> {
+      return syncResultEntry.camisHours === -1 ? this.camisNotAvailableTemplate : this.camisAvailableTemplate;
     }
 
     getUrl(){
