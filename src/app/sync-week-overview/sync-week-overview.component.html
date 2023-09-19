@@ -15,28 +15,12 @@
                 <tbody>
                 <tr *ngFor="let syncResultEntry of syncResultEntries"
                     [ngStyle]="getRowStyle(syncResultEntry)">
-                    <ng-container
-                            *ngIf="syncResultEntry.camisHours == -1; then camisNotAvailable; else camisAvailable">
-                    </ng-container>
-                    <ng-template #camisNotAvailable>
-                        <td><span class="material-icons" title="{{ syncResultEntry.message }}">alarm</span></td>
+                        <td><span class="material-icons" title="{{ syncResultEntry.message }}">{{getRowIcon(syncResultEntry)}}</span></td>
                         <td>{{ syncResultEntry.syncDate }}</td>
                         <td>{{ syncResultEntry.employeeName }}</td>
                         <td>{{ syncResultEntry.inputHours }}</td>
-                        <td></td>
+                        <td>{{ getCamisHours(syncResultEntry) }}</td>
                         <td>{{ syncResultEntry.workOrder.value }}</td>
-                    </ng-template>
-                    <ng-template #camisAvailable>
-                        <td *ngIf="syncResultEntry.camisHours != -1 && syncResultEntry.inputHours === syncResultEntry.camisHours ">
-                            <span class="material-icons" title="{{ syncResultEntry.message }}">check</span></td>
-                        <td *ngIf="syncResultEntry.camisHours != -1 && syncResultEntry.inputHours !== syncResultEntry.camisHours ">
-                            <span class="material-icons" title="{{ syncResultEntry.message }}">clear</span></td>
-                        <td>{{ syncResultEntry.syncDate }}</td>
-                        <td>{{ syncResultEntry.employeeName }}</td>
-                        <td>{{ syncResultEntry.inputHours }}</td>
-                        <td>{{ syncResultEntry.camisHours }}</td>
-                        <td>{{ syncResultEntry.workOrder.value }}</td>
-                    </ng-template>
                 </tr>
                 </tbody>
             </table>

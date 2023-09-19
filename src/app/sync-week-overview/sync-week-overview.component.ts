@@ -32,13 +32,36 @@ export class SyncWeekOverviewComponent implements OnInit {
     }
 
     getRowStyle(syncResultEntry) {
-        if (syncResultEntry.camisHours === -1.0) {
-            return {'background-color': 'orange'};
-        } else if ( syncResultEntry.inputHours === syncResultEntry.camisHours) {
-          return {'background-color': 'white'};
-        } else {
+        if (syncResultEntry.syncResult === 'SUCCESS') {
+            return {'background-color': 'green'};
+        }
+        if (syncResultEntry.syncResult === 'NO_SYNC_REQUIRED') {
+            return {'background-color': 'white'};
+        }
+        if (syncResultEntry.syncResult === 'INSUFFICIENT_HOURS_ERROR') {
             return {'background-color': 'orange'};
         }
+        return {'background-color': 'red'};
+    }
+
+    getRowIcon(syncResultEntry) {
+        if (syncResultEntry.syncResult === 'SUCCESS') {
+            return 'check';
+        }
+        if (syncResultEntry.syncResult === 'NO_SYNC_REQUIRED') {
+            return 'balance';
+        }
+        if (syncResultEntry.syncResult === 'INSUFFICIENT_HOURS_ERROR') {
+            return 'alarm';
+        }
+        return 'clear';
+    }
+
+    getCamisHours(syncResultEntry) {
+        if (syncResultEntry.camisHours === -1.0) {
+            return '';
+        }
+        return syncResultEntry.camisHours;
     }
 
     getUrl(){
