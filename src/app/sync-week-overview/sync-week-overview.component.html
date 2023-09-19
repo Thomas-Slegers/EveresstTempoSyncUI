@@ -15,12 +15,14 @@
                 <tbody>
                 <tr *ngFor="let syncResultEntry of syncResultEntries"
                     [ngStyle]="getRowStyle(syncResultEntry)">
-                    <ng-container [ngTemplateOutlet]="getTemplate(syncResultEntry)">
+                    <ng-container
+                            [ngTemplateOutlet]="getTemplate(syncResultEntry)"
+                            [ngTemplateOutletContext]="{ syncResultEntry: syncResultEntry }" >
                     </ng-container>
                 </tr>
                 </tbody>
 
-                <ng-template #camisNotAvailable>
+                <ng-template #camisNotAvailable let-syncResultEntry>
                     <td><span class="material-icons" title="Insufficient (<8) hours booked in Tempo">punchclock</span></td>
                     <td>{{ syncResultEntry.syncDate }}</td>
                     <td>{{ syncResultEntry.employeeName }}</td>
@@ -28,7 +30,7 @@
                     <td></td>
                     <td>{{ syncResultEntry.workOrder.value }}</td>
                 </ng-template>
-                <ng-template #camisAvailable>
+                <ng-template #camisAvailable let-syncResultEntry>
                     <td *ngIf="syncResultEntry.camisHours != -1 && syncResultEntry.inputHours === syncResultEntry.camisHours ">
                         <span class="material-icons" title="Synced correctly">check</span></td>
                     <td *ngIf="syncResultEntry.camisHours != -1 && syncResultEntry.inputHours !== syncResultEntry.camisHours ">
