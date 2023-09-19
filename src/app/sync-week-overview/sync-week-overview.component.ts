@@ -41,6 +41,9 @@ export class SyncWeekOverviewComponent implements OnInit {
         if (syncResultEntry.syncResult === 'INSUFFICIENT_HOURS_ERROR') {
             return {'background-color': 'orange'};
         }
+        if (syncResultEntry.syncResult === 'WARNING') {
+            return {'background-color': 'lightorange'};
+        }
         return {'background-color': 'red'};
     }
 
@@ -53,6 +56,9 @@ export class SyncWeekOverviewComponent implements OnInit {
         }
         if (syncResultEntry.syncResult === 'INSUFFICIENT_HOURS_ERROR') {
             return 'alarm';
+        }
+        if (syncResultEntry.syncResult === 'WARNING') {
+            return 'warning';
         }
         return 'clear';
     }
