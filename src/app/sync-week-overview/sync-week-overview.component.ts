@@ -1,4 +1,4 @@
-import {Component, ViewChild, TemplateRef, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {SyncResultEntry} from "../model/sync-result-entry";
 import {SyncEntityService} from "../service/sync-entity.service";
@@ -10,8 +10,6 @@ import {SyncEntityService} from "../service/sync-entity.service";
 })
 export class SyncWeekOverviewComponent implements OnInit {
     syncResultEntries: SyncResultEntry[];
-    @ViewChild('camisNotAvailable', { static: true }) camisNotAvailableTemplate: TemplateRef<any>;
-    @ViewChild('camisAvailable', { static: true }) camisAvailableTemplate: TemplateRef<any>;
 
     constructor(private route: ActivatedRoute, private router: Router, private syncEntityService: SyncEntityService) {
     }
@@ -33,18 +31,14 @@ export class SyncWeekOverviewComponent implements OnInit {
         }
     }
 
-    getRowStyle(syncResultEntry : SyncResultEntry) {
-        if (syncResultEntry.camisHours != -1){
+    getRowStyle(syncResultEntry) {
+        if (syncResultEntry.camisHours != -1) {
             return {'background-color': 'red'};
-        } else if (syncResultEntry.inputHours - syncResultEntry.camisHours !== 0){
-            return {'background-color': 'orange'};
-        } else{
+        } else if ( syncResultEntry.inputHours !== syncResultEntry.camisHours) {
+          return {'background-color': 'orange'};
+        } else {
             return {};
         }
-    }
-
-    getTemplate(syncResultEntry: SyncResultEntry): TemplateRef<any> {
-      return syncResultEntry.camisHours === -1 ? this.camisNotAvailableTemplate : this.camisAvailableTemplate;
     }
 
     getUrl(){
