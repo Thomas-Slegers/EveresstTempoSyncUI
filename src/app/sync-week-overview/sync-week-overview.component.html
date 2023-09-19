@@ -4,7 +4,7 @@
             <table class="table table-bordered table-striped">
                 <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Correct</th>
+                    <th scope="col">Sync Result <i><span class="info-icon" title="Hover on icons for more info">ℹ️</span></i></th>
                     <th scope="col">Date</th>
                     <th scope="col">Employee</th>
                     <th scope="col">Hours Logged Tempo</th>
@@ -19,7 +19,7 @@
                             *ngIf="syncResultEntry.camisHours == -1; then camisNotAvailable; else camisAvailable">
                     </ng-container>
                     <ng-template #camisNotAvailable>
-                        <td><span class="material-icons" title="{{ syncResultEntry.message }}">punchclock</span></td>
+                        <td><span class="material-icons" title="{{ syncResultEntry.message }}">alarm</span></td>
                         <td>{{ syncResultEntry.syncDate }}</td>
                         <td>{{ syncResultEntry.employeeName }}</td>
                         <td>{{ syncResultEntry.inputHours }}</td>
