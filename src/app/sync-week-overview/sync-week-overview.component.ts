@@ -37,7 +37,7 @@ export class SyncWeekOverviewComponent implements OnInit {
         if (syncResultEntry.camisHours != -1){
             return {'background-color': 'red'};
         } else if (syncResultEntry.inputHours - syncResultEntry.camisHours !== 0){
-            return {'background-color': 'red'};
+            return {'background-color': 'orange'};
         } else{
             return {};
         }
