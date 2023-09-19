@@ -17,27 +17,28 @@
                     [ngStyle]="getRowStyle(syncResultEntry)">
                     <ng-container [ngTemplateOutlet]="getTemplate(syncResultEntry)">
                     </ng-container>
-                    <ng-template #camisNotAvailable>
-                        <td><span class="material-icons" title="Insufficient (<8) hours booked in Tempo">punchclock</span></td>
-                        <td>{{ syncResultEntry.syncDate }}</td>
-                        <td>{{ syncResultEntry.employeeName }}</td>
-                        <td>{{ syncResultEntry.inputHours }}</td>
-                        <td></td>
-                        <td>{{ syncResultEntry.workOrder.value }}</td>
-                    </ng-template>
-                    <ng-template #camisAvailable>
-                        <td *ngIf="syncResultEntry.camisHours != -1 && syncResultEntry.inputHours === syncResultEntry.camisHours ">
-                            <span class="material-icons" title="Synced correctly">check</span></td>
-                        <td *ngIf="syncResultEntry.camisHours != -1 && syncResultEntry.inputHours !== syncResultEntry.camisHours ">
-                            <span class="material-icons" title="Unable to sync correctly, fix manually">clear</span></td>
-                        <td>{{ syncResultEntry.syncDate }}</td>
-                        <td>{{ syncResultEntry.employeeName }}</td>
-                        <td>{{ syncResultEntry.inputHours }}</td>
-                        <td>{{ syncResultEntry.camisHours }}</td>
-                        <td>{{ syncResultEntry.workOrder.value }}</td>
-                    </ng-template>
                 </tr>
                 </tbody>
+
+                <ng-template #camisNotAvailable>
+                    <td><span class="material-icons" title="Insufficient (<8) hours booked in Tempo">punchclock</span></td>
+                    <td>{{ syncResultEntry.syncDate }}</td>
+                    <td>{{ syncResultEntry.employeeName }}</td>
+                    <td>{{ syncResultEntry.inputHours }}</td>
+                    <td></td>
+                    <td>{{ syncResultEntry.workOrder.value }}</td>
+                </ng-template>
+                <ng-template #camisAvailable>
+                    <td *ngIf="syncResultEntry.camisHours != -1 && syncResultEntry.inputHours === syncResultEntry.camisHours ">
+                        <span class="material-icons" title="Synced correctly">check</span></td>
+                    <td *ngIf="syncResultEntry.camisHours != -1 && syncResultEntry.inputHours !== syncResultEntry.camisHours ">
+                        <span class="material-icons" title="Unable to sync correctly, fix manually">clear</span></td>
+                    <td>{{ syncResultEntry.syncDate }}</td>
+                    <td>{{ syncResultEntry.employeeName }}</td>
+                    <td>{{ syncResultEntry.inputHours }}</td>
+                    <td>{{ syncResultEntry.camisHours }}</td>
+                    <td>{{ syncResultEntry.workOrder.value }}</td>
+                </ng-template>
             </table>
             <button class="btn btn-secondary" [routerLink]="getUrl().substring(0, getUrl().lastIndexOf('/'))"><i class="bi bi-arrow-right"></i>Sync Overview</button>
         </div>
