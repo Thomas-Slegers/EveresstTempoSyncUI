@@ -33,7 +33,7 @@ export class SyncWeekOverviewComponent implements OnInit {
 
     getRowStyle(syncResultEntry) {
         if (syncResultEntry.syncResult === 'SUCCESS') {
-            return {'background-color': 'green'};
+            return {'background-color': 'lightgreen'};
         }
         if (syncResultEntry.syncResult === 'NO_SYNC_REQUIRED') {
             return {'background-color': 'white'};
