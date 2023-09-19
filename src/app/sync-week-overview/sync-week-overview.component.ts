@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ViewChild, TemplateRef, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {SyncResultEntry} from "../model/sync-result-entry";
 import {SyncEntityService} from "../service/sync-entity.service";
@@ -10,8 +10,8 @@ import {SyncEntityService} from "../service/sync-entity.service";
 })
 export class SyncWeekOverviewComponent implements OnInit {
     syncResultEntries: SyncResultEntry[];
-     @ViewChild('camisNotAvailable', { static: true }) camisNotAvailableTemplate: TemplateRef<any>;
-     @ViewChild('camisAvailable', { static: true }) camisAvailableTemplate: TemplateRef<any>;
+    @ViewChild('camisNotAvailable', { static: true }) camisNotAvailableTemplate: TemplateRef<any>;
+    @ViewChild('camisAvailable', { static: true }) camisAvailableTemplate: TemplateRef<any>;
 
     constructor(private route: ActivatedRoute, private router: Router, private syncEntityService: SyncEntityService) {
     }
