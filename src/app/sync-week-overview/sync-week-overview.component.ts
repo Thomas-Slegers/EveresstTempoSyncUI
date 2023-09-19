@@ -32,12 +32,12 @@ export class SyncWeekOverviewComponent implements OnInit {
     }
 
     getRowStyle(syncResultEntry) {
-        if (syncResultEntry.camisHours != -1) {
-            return {'background-color': 'red'};
-        } else if ( syncResultEntry.inputHours !== syncResultEntry.camisHours) {
-          return {'background-color': 'orange'};
+        if (syncResultEntry.camisHours === -1.0) {
+            return {'background-color': 'orange'};
+        } else if ( syncResultEntry.inputHours === syncResultEntry.camisHours) {
+          return {'background-color': 'white'};
         } else {
-            return {};
+            return {'background-color': 'orange'};
         }
     }
 
