@@ -8,8 +8,8 @@ export class Environment {
             this._inputUrl = 'http://localhost:5000/input';
             this._syncUrl = 'http://localhost:5000/sync';
         } else{
-            this._inputUrl = 'https://temposync-everesst.upcycle.gratis/input';
-            this._syncUrl = 'https://temposync-everesst.upcycle.gratis/sync';
+            this._inputUrl = 'http://everessttemposynctoolenvironment.eba-caviiswi.eu-central-1.elasticbeanstalk.com/input';
+            this._syncUrl = 'http://everessttemposynctoolenvironment.eba-caviiswi.eu-central-1.elasticbeanstalk.com/sync';
         }
     }
 
