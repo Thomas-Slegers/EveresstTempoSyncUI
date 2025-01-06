@@ -8,8 +8,8 @@ export class Environment {
             this._inputUrl = 'http://localhost:5000/input';
             this._syncUrl = 'http://localhost:5000/sync';
         } else{
-            this._inputUrl = 'http://Backend-everesst-sync-test-1-env.eba-6yepturm.eu-north-1.elasticbeanstalk.com/input';
-            this._syncUrl = 'http://Backend-everesst-sync-test-1-env.eba-6yepturm.eu-north-1.elasticbeanstalk.com/sync';
+            this._inputUrl = 'http://backend-everesst-sync-test-1-env.eba-6yepturm.eu-north-1.elasticbeanstalk.com//input';
+            this._syncUrl = 'http://backend-everesst-sync-test-1-env.eba-6yepturm.eu-north-1.elasticbeanstalk.com//sync';
         }
     }
 
